@@ -5,7 +5,7 @@ import { rootReducer } from './reducers';
 
 const store = configureStore(
   { reducer: rootReducer },
-  composeWithDevTools(applyMiddleware(thunk))
+  composeWithDevTools(applyMiddleware(thunk)),
 );
 
 export default store;
