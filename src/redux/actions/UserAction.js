@@ -14,7 +14,7 @@ const login = (email, password) => async (dispatch) => {
     const { data } = await axios.post(
       'http://localhost:3001/auth/login',
       { email, password },
-      config,
+      config
     );
 
     dispatch({
@@ -25,9 +25,9 @@ const login = (email, password) => async (dispatch) => {
     dispatch({
       type: types.USER_LOGIN_FAIL,
       payload:
-                error.response && error.response.data.message
-                  ? error.response.data.message
-                  : error.message,
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
     });
   }
 };
