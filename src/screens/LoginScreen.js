@@ -1,21 +1,24 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
 import Loader from '../components/Loader';
-import Message from '../components/Message';
+import 'react-toastify/dist/ReactToastify.css';
 import { login } from '../redux/actions/UserAction';
 
 const LoginScreen = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
+  const emailRef = useRef();
+  const passwordRef = useRef();
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;
+  const notify = () => {
+    toast.error(error);
+  };
 
   useEffect(() => {
     if (userInfo) {
@@ -25,12 +28,11 @@ const LoginScreen = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(login(email, password));
+    dispatch(login(emailRef.current.value, passwordRef.current.value));
   };
 
   return (
     <div className="w-full max-w-xs">
-      {error && <Message>{error}</Message>}
       {loading && <Loader />}
       <form
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
@@ -48,8 +50,7 @@ const LoginScreen = () => {
             id="username"
             type="email"
             placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            ref={emailRef}
           />
         </div>
         <div className="mb-6">
@@ -64,8 +65,7 @@ const LoginScreen = () => {
             id="password"
             type="password"
             placeholder="******************"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            ref={passwordRef}
           />
           <p className="text-red-500 text-xs italic">
             Please choose a password.
@@ -75,6 +75,7 @@ const LoginScreen = () => {
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
+            onClick={error && notify()}
           >
             Sign In
           </button>
@@ -86,6 +87,7 @@ const LoginScreen = () => {
           </NavLink>
         </div>
       </form>
+      <ToastContainer />
     </div>
   );
 };

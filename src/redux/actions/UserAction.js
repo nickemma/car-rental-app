@@ -25,9 +25,9 @@ const login = (email, password) => async (dispatch) => {
     dispatch({
       type: types.USER_LOGIN_FAIL,
       payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
+        error.response && error.response.data.msg
+          ? error.response.data.msg
+          : error.msg,
     });
   }
 };
@@ -56,9 +56,9 @@ const register = (name, email, password) => async (dispatch) => {
     dispatch({
       type: types.USER_REGISTER_FAIL,
       payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
+        error.response && error.response.data.msg
+          ? error.response.data.msg
+          : error.msg,
     });
   }
 };

@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../components/Loader';
-import Message from '../components/Message';
 import { register } from '../redux/actions/UserAction';
 
 const RegisterScreen = () => {
@@ -31,7 +30,7 @@ const RegisterScreen = () => {
 
   return (
     <div className="w-full max-w-xs">
-      {error && <Message>{error}</Message>}
+      {error && <div>{error}</div>}
       {loading && <Loader />}
       <form
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
