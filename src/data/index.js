@@ -1,6 +1,8 @@
 import { GrUpdate } from 'react-icons/gr';
 import { BsBookHalf } from 'react-icons/bs';
 import { AiFillCar } from 'react-icons/ai';
+import { FaUsers } from 'react-icons/fa';
+import { BiLogInCircle } from 'react-icons/bi';
 
 const navbarItems = [
   {
@@ -21,11 +23,13 @@ const navbarItems = [
   {
     name: 'Login',
     path: '/login',
+    icon: <BiLogInCircle />,
     gap: true,
   },
   {
     name: 'Sign Up',
     path: '/signup',
+    icon: <FaUsers />,
   },
 ];
 

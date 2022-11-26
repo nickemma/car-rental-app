@@ -32,7 +32,7 @@ const Navbar = () => {
               {navbarItems.map((item) => (
                 <li
                   key={item.name}
-                  className={`text-white text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-gray-400 rounded-bl-lg ${
+                  className={`text-white text-sm flex items-center duration-500 gap-x-4 cursor-pointer p-2 hover:bg-gray-400 rounded-bl-lg ${
                     item.gap ? 'mt-9' : 'mt-2'
                   }`}
                 >
