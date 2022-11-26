@@ -8,13 +8,14 @@ const login = (email, password) => async (dispatch) => {
     const config = {
       Headers: {
         'Content-Type': 'application/json',
+        accept: 'application/json',
       },
     };
 
     const { data } = await axios.post(
       'http://localhost:3000/auth',
       { email, password },
-      config,
+      config
     );
 
     dispatch({
@@ -39,15 +40,19 @@ const register = (avatar, name, email, password) => async (dispatch) => {
     const config = {
       Headers: {
         'Content-Type': 'application/json',
+        accept: 'application/json',
       },
     };
 
     const { data } = await axios.post(
       'http://localhost:3000/users',
       {
-        avatar, name, email, password,
+        avatar,
+        name,
+        email,
+        password,
       },
-      config,
+      config
     );
 
     dispatch({
