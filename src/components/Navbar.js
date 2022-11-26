@@ -36,7 +36,9 @@ const Navbar = () => {
                     item.gap ? 'mt-9' : 'mt-2'
                   }`}
                 >
-                  <AiOutlineBars className="text-black font-extrabold text-xl" />
+                  <span className="text-black font-extrabold text-xl">
+                    {item.icon}
+                  </span>
                   <span
                     className={`${
                       !open && 'hidden'
