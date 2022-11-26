@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,9 +10,21 @@ const RegisterScreen = () => {
   const [name, setName] = useState('');
   const [avatar, setAvatar] = useState(null);
 
-  const navigate = useNavigate();
-
+  const onImageChange = (event) => {
+    setAvatar(event.target.files[0]);
+  };
   const dispatch = useDispatch();
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('password', password);
+    formData.append('avatar', avatar);
+    dispatch(register(formData));
+  };
+
+  const navigate = useNavigate();
 
   const userRegister = useSelector((state) => state.userRegister);
   const { loading, error, userInfo } = userRegister;
@@ -24,30 +35,18 @@ const RegisterScreen = () => {
     }
   }, [navigate, userInfo]);
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    dispatch(register(avatar, name, email, password));
-  };
-
-  const onImageChange = (event) => {
-    if (event.target.file && event.target.file[0]) {
-      const img = event.target.file[0];
-      setAvatar(img);
-    }
-  };
-
   return (
     <div className="w-full max-w-xs">
       {error && <div>{error}</div>}
       {loading && <Loader />}
       <form
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-        onSubmit={submitHandler}
+        onSubmit={handleSubmit}
       >
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="file"
+            htmlFor="files"
           >
             Avatar
           </label>

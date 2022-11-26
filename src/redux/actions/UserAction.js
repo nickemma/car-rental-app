@@ -15,7 +15,7 @@ const login = (email, password) => async (dispatch) => {
     const { data } = await axios.post(
       'http://localhost:3000/auth',
       { email, password },
-      config
+      config,
     );
 
     dispatch({
@@ -33,27 +33,20 @@ const login = (email, password) => async (dispatch) => {
   }
 };
 
-const register = (avatar, name, email, password) => async (dispatch) => {
+const register = (formData) => async (dispatch) => {
   try {
     dispatch({ type: types.USER_REGISTER_REQUEST });
 
     const config = {
-      Headers: {
-        'Content-Type': 'application/json',
-        accept: 'application/json',
-      },
+      headers: { 'Content-Type': 'multipart/form-data' },
     };
 
-    const { data } = await axios.post(
-      'http://localhost:3000/users',
-      {
-        avatar,
-        name,
-        email,
-        password,
-      },
-      config
-    );
+    const { data } = await axios({
+      method: 'post',
+      url: 'http://localhost:3000/users',
+      data: formData,
+      config,
+    });
 
     dispatch({
       type: types.USER_REGISTER_SUCCESS,
