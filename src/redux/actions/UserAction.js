@@ -14,7 +14,7 @@ const login = (email, password) => async (dispatch) => {
     const { data } = await axios.post(
       'http://localhost:3000/auth',
       { email, password },
-      config
+      config,
     );
 
     dispatch({
@@ -44,8 +44,10 @@ const register = (avatar, name, email, password) => async (dispatch) => {
 
     const { data } = await axios.post(
       'http://localhost:3000/users',
-      { avatar, name, email, password },
-      config
+      {
+        avatar, name, email, password,
+      },
+      config,
     );
 
     dispatch({
