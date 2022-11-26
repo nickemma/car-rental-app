@@ -19,7 +19,11 @@ const Navbar = () => {
             }`}
             onClick={() => setOpen(!open)}
           />
-          <div className="cursor-pointer duration-300 w-8.45 my-4 mx-auto">
+          <div
+            className={`${
+              open ? 'w-36' : 'w-20'
+            } cursor-pointer duration-300 my-4 mx-auto border-rounded`}
+          >
             <img src={logo} alt="logo" />
           </div>
         </div>
