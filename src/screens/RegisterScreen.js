@@ -38,7 +38,7 @@ const RegisterScreen = () => {
   }, [navigate, userInfo]);
 
   return (
-    <div className="w-full max-w-xs">
+    <div className="w-full max-w-sm mt-10 mx-auto">
       {error && <div>{error}</div>}
       {loading && <Loader />}
       <form

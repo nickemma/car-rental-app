@@ -6,8 +6,8 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      {/* <LoginScreen />
-      <RegisterScreen /> */}
+      {/* <LoginScreen /> */}
+      {/* <RegisterScreen /> */}
     </div>
   );
 }
