@@ -9,6 +9,7 @@ const RegisterScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+  const [avatar, setAvatar] = useState(null);
 
   const navigate = useNavigate();
 
@@ -25,7 +26,14 @@ const RegisterScreen = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(register(name, email, password));
+    dispatch(register(avatar, name, email, password));
+  };
+
+  const onImageChange = (event) => {
+    if (event.target.file && event.target.file[0]) {
+      const img = event.target.file[0];
+      setAvatar(img);
+    }
   };
 
   return (
@@ -39,6 +47,21 @@ const RegisterScreen = () => {
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="file"
+          >
+            Avatar
+          </label>
+          <input
+            type="file"
+            accept="image/*"
+            multiple={false}
+            onChange={onImageChange}
+          />
+        </div>
+
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="username"
           >
             FullName
@@ -47,7 +70,7 @@ const RegisterScreen = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="username"
             type="name"
-            placeholder="Email"
+            placeholder="FullName"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
