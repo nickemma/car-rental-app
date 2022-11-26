@@ -11,6 +11,15 @@ const navbarItems = [
     name: 'BOOKING',
     path: '/booking',
   },
+  {
+    name: 'Login',
+    path: '/login',
+    gap: true,
+  },
+  {
+    name: 'Sign Up',
+    path: '/signup',
+  },
 ];
 
 export default navbarItems;

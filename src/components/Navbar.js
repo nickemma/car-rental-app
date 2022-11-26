@@ -27,19 +27,23 @@ const Navbar = () => {
           >
             <img src={logo} alt="logo" />
           </div>
-          <div className="flex flex-col items-center">
+          <ul className="pt-6">
             {navbarItems.map((item) => (
-              <div
+              <li
                 key={item.name}
-                className={`${
-                  open ? 'w-36' : 'w-20'
-                } h-10  flex items-center  cursor-pointer duration-300 hover:bg-primary`}
+                className={`text-gray-300 text:sm flex item-center gap-x-4 cursor-pointer p-2 hover:bg-slate-300 rounded-md ${
+                  item.gap ? 'mt-9' : 'mt-2'
+                }`}
               >
-                {item.name}
-              </div>
+                <FaAngleDoubleRight />
+                <span
+                  className={`${!open && 'hidden'} origin-left duration-200`}
+                >
+                  {item.name}
+                </span>
+              </li>
             ))}
-          </div>
-
+          </ul>
         </div>
         <div className="p-7 text-2xl font-semibold flex-1 h-screen">
           <h1>Homepage</h1>
