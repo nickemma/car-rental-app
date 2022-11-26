@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { FaAngleDoubleRight } from 'react-icons/fa';
+import logo from '../assests/logo.gif';
 
 const Navbar = () => {
   const [open, setOpen] = useState(true);
 
   return (
     <>
-      <nav className="flex">
+      <div className="flex">
         <div
           className={`${
             open ? 'w-72' : 'w-20'
@@ -18,11 +19,14 @@ const Navbar = () => {
             }`}
             onClick={() => setOpen(!open)}
           />
+          <div className="cursor-pointer duration-300 w-8.45 my-4 mx-auto">
+            <img src={logo} alt="logo" />
+          </div>
         </div>
         <div className="p-7 text-2xl font-semibold flex-1 h-screen">
           <h1>Homepage</h1>
         </div>
-      </nav>
+      </div>
     </>
   );
 };
