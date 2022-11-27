@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { DatePicker } from 'react-responsive-datepicker';
 import 'react-responsive-datepicker/dist/index.css';
 import Loader from '../components/Loader';
+import InlineError from '../components/InlineError';
 import { register } from '../redux/actions/UserAction';
 
 const RegisterScreen = () => {
@@ -13,8 +14,12 @@ const RegisterScreen = () => {
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [date, setDate] = useState(new Date());
+  const [submited, setSubmited] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [valid, setValid] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [avatar, setAvatar] = useState(null);
+
 
   // add date format
   const dateFormat = (date) => {
@@ -47,8 +52,11 @@ const RegisterScreen = () => {
 
   useEffect(() => {
     if (userInfo) {
-      navigate('/');
+      navigate('/login');
     }
+
+    
+
   }, [navigate, userInfo]);
 
   return (
@@ -56,7 +64,7 @@ const RegisterScreen = () => {
       {error && <div>{error}</div>}
       {loading && <Loader />}
       <form
-        className="register bg-red-500 shadow-md rounded px-8 pt-6 pb-4 mb-4 w-full max-w-sm mx-auto"
+        className="register shadow-md rounded px-8 pt-6 pb-4 mb-4 w-full max-w-sm mx-auto"
         onSubmit={handleSubmit}
       >
         <div className="mb-4">
@@ -138,7 +146,7 @@ const RegisterScreen = () => {
             Password
           </label>
           <input
-            className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
             id="password"
             type="password"
             placeholder="******************"
