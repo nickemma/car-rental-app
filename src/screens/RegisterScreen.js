@@ -1,16 +1,29 @@
 /* eslint-disable */
 
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import Loader from '../components/Loader';
-import { register } from '../redux/actions/UserAction';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { DatePicker } from "react-responsive-datepicker";
+import "react-responsive-datepicker/dist/index.css";
+import Loader from "../components/Loader";
+import { register } from "../redux/actions/UserAction";
 
 const RegisterScreen = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [date, setDate] = useState(new Date());
+  const [isOpen, setIsOpen] = useState(false);
   const [avatar, setAvatar] = useState(null);
+
+  // add date format
+  const dateFormat = (date) => {
+    const d = new Date(date);
+    const day = d.getDate();
+    const month = d.getMonth() + 1;
+    const year = d.getFullYear();
+    return `${day}/${month}/${year}`;
+  };
 
   const onImageChange = (event) => {
     setAvatar(event.target.files[0]);
@@ -19,10 +32,11 @@ const RegisterScreen = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append('name', name);
-    formData.append('email', email);
-    formData.append('password', password);
-    formData.append('avatar', avatar);
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("avatar", avatar);
+    formData.append("date_of_birth", date);
     dispatch(register(formData));
   };
 
@@ -33,7 +47,7 @@ const RegisterScreen = () => {
 
   useEffect(() => {
     if (userInfo) {
-      navigate('/');
+      navigate("/");
     }
   }, [navigate, userInfo]);
 
@@ -90,6 +104,30 @@ const RegisterScreen = () => {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className="mb-6">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="date"
+          >
+            Birth
+          </label>
+          <input
+            type="text"
+            value={dateFormat(date)}
+            readOnly
+            onClick={() => setIsOpen(true)}
+            className="shadow cursor-pointer appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+          <DatePicker
+            value={date}
+            onChange={(date) => setDate(date)}
+            isOpen={isOpen}
+            onClose={() => setIsOpen(false)}
+            defaultValue={new Date(2022, 8, 8)}
+            maxDate={new Date(2023, 0, 10)}
+            headerFormat="DD MM dd"
           />
         </div>
         <div className="mb-6">

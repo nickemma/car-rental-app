@@ -4,7 +4,7 @@ import { AiFillCar } from 'react-icons/ai';
 import { FaUsers } from 'react-icons/fa';
 import { BiLogInCircle } from 'react-icons/bi';
 
-const navbarItems = [
+export const navbarItems = [
   {
     name: 'MODELS',
     path: '/',
@@ -20,6 +20,9 @@ const navbarItems = [
     path: '/booking',
     icon: <BsBookHalf />,
   },
+];
+
+export const auth = [
   {
     name: 'Login',
     path: '/login',
@@ -32,5 +35,3 @@ const navbarItems = [
     icon: <FaUsers />,
   },
 ];
-
-export default navbarItems;
