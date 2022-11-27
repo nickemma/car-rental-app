@@ -1,12 +1,12 @@
 /* eslint-disable */
-import { useState } from "react";
-import { AiOutlineBars } from "react-icons/ai";
-import { CgLogOut } from "react-icons/cg";
-import { NavLink, useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import logo from "../assets/logo.gif";
-import { auth, navbarItems } from "../data";
-import { logout } from "../redux/actions/UserAction";
+import { useState } from 'react';
+import { AiOutlineBars } from 'react-icons/ai';
+import { CgLogOut } from 'react-icons/cg';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import logo from '../assets/logo.gif';
+import { auth, navbarItems } from '../data';
+import { logout } from '../redux/actions/UserAction';
 
 const Navbar = () => {
   const [open, setOpen] = useState(true);
@@ -18,25 +18,25 @@ const Navbar = () => {
 
   const onLogoutHandler = () => {
     dispatch(logout());
-    navigate("/");
-  }
+    navigate('/');
+  };
   return (
     <>
       <div className="flex max-h-[95vh]">
         <div
           className={`${
-            open ? "w-56" : "w-10"
+            open ? 'w-56' : 'w-10'
           } h-screen border-r-2 border-slate-300 bg-white relative duration-300 `}
         >
           <AiOutlineBars
             className={`absolute cursor-pointer -right-3 top-9 w-9 font-medium text-2xl ${
-              !open && "rotate-180"
+              !open && 'rotate-180'
             }`}
             onClick={() => setOpen(!open)}
           />
           <div
             className={`${
-              open ? "w-36" : "w-10"
+              open ? 'w-36' : 'w-10'
             } cursor-pointer duration-300 my-4 mx-auto border-rounded`}
           >
             <img src={logo} alt="logo" />
@@ -47,7 +47,7 @@ const Navbar = () => {
                 <NavLink
                   key={item.name}
                   className={`text-white text-sm flex items-center duration-500 gap-x-4 cursor-pointer p-2 hover:bg-gray-400 rounded-bl-lg ${
-                    item.gap ? "mt-9" : "mt-2"
+                    item.gap ? 'mt-9' : 'mt-2'
                   }`}
                   to={item.path}
                 >
@@ -56,7 +56,7 @@ const Navbar = () => {
                   </span>
                   <span
                     className={`${
-                      !open && "hidden"
+                      !open && 'hidden'
                     } origin-left duration-200 text-base font-extrabold text-center text-slate-800`}
                   >
                     {item.name}
@@ -70,7 +70,7 @@ const Navbar = () => {
                   <NavLink
                     key={item.name}
                     className={`text-white text-sm flex items-center duration-500 gap-x-4 cursor-pointer p-2 hover:bg-gray-400 rounded-bl-lg ${
-                      item.gap ? "mt-9" : "mt-2"
+                      item.gap ? 'mt-9' : 'mt-2'
                     }`}
                     to={item.path}
                   >
@@ -79,7 +79,7 @@ const Navbar = () => {
                     </span>
                     <span
                       className={`${
-                        !open && "hidden"
+                        !open && 'hidden'
                       } origin-left duration-200 text-base font-extrabold text-center text-slate-800`}
                     >
                       {item.name}
@@ -89,22 +89,22 @@ const Navbar = () => {
               </ul>
             ) : (
               <ul className="pt-6">
-                  <button
-                    className={`text-white text-sm flex items-center duration-500 gap-x-4 cursor-pointer p-2 hover:bg-gray-400 rounded-bl-lg 
+                <button
+                  className={`text-white text-sm flex items-center duration-500 gap-x-4 cursor-pointer p-2 hover:bg-gray-400 rounded-bl-lg 
                     `}
-                    onClick={onLogoutHandler}
+                  onClick={onLogoutHandler}
+                >
+                  <span className="text-black font-extrabold text-xl">
+                    <CgLogOut />
+                  </span>
+                  <span
+                    className={`${
+                      !open && 'hidden'
+                    } origin-left duration-200 text-base font-extrabold text-center text-slate-800`}
                   >
-                    <span className="text-black font-extrabold text-xl">
-                      <CgLogOut />
-                    </span>
-                    <span
-                      className={`${
-                        !open && "hidden"
-                      } origin-left duration-200 text-base font-extrabold text-center text-slate-800`}
-                    >
-                      Logout
-                    </span>
-                  </button>
+                    Logout
+                  </span>
+                </button>
               </ul>
             )}
           </nav>

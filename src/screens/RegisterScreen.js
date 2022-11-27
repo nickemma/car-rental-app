@@ -1,17 +1,17 @@
 /* eslint-disable */
 
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { DatePicker } from "react-responsive-datepicker";
-import "react-responsive-datepicker/dist/index.css";
-import Loader from "../components/Loader";
-import { register } from "../redux/actions/UserAction";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { DatePicker } from 'react-responsive-datepicker';
+import 'react-responsive-datepicker/dist/index.css';
+import Loader from '../components/Loader';
+import { register } from '../redux/actions/UserAction';
 
 const RegisterScreen = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
   const [date, setDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
   const [avatar, setAvatar] = useState(null);
@@ -32,11 +32,11 @@ const RegisterScreen = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("name", name);
-    formData.append("email", email);
-    formData.append("password", password);
-    formData.append("avatar", avatar);
-    formData.append("date_of_birth", date);
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('password', password);
+    formData.append('avatar', avatar);
+    formData.append('date_of_birth', date);
     dispatch(register(formData));
   };
 
@@ -47,7 +47,7 @@ const RegisterScreen = () => {
 
   useEffect(() => {
     if (userInfo) {
-      navigate("/");
+      navigate('/');
     }
   }, [navigate, userInfo]);
 
@@ -111,7 +111,7 @@ const RegisterScreen = () => {
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="date"
           >
-            Birth
+            DOB
           </label>
           <input
             type="text"

@@ -32,10 +32,10 @@ const LoginScreen = () => {
   };
 
   return (
-    <div className="w-full max-w-xs mt-28 mx-auto">
+    <div>
       {loading && <Loader />}
       <form
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        className="login shadow-md rounded px-8 pt-6 pb-8 mb-4 bg-red-500 w-full max-w-sm mx-auto "
         onSubmit={submitHandler}
       >
         <div className="mb-4">
@@ -67,11 +67,8 @@ const LoginScreen = () => {
             placeholder="******************"
             ref={passwordRef}
           />
-          <p className="text-red-500 text-xs italic">
-            Please choose a password.
-          </p>
         </div>
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-center">
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
@@ -79,11 +76,16 @@ const LoginScreen = () => {
           >
             Sign In
           </button>
+        </div>
+        <div className="flex items-center justify-center mt-4">
+          <p className="text-red-500 text-sm italic p-3">
+            Don&#39;t have an account yet?
+          </p>
           <NavLink
-            className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-            to="/"
+            className="inline-block align-baseline underline font-bold text-sm text-blue-500 hover:text-blue-800"
+            to="/register"
           >
-            Forgot Password?
+            Sign Up
           </NavLink>
         </div>
       </form>
