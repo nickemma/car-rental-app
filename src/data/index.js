@@ -22,13 +22,13 @@ const navbarItems = [
   },
   {
     name: 'Login',
-    path: '/LoginScreen',
+    path: '/login',
     icon: <BiLogInCircle />,
     gap: true,
   },
   {
     name: 'Sign Up',
-    path: '/RegisterScreen',
+    path: '/register',
     icon: <FaUsers />,
   },
 ];

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { AiOutlineBars } from 'react-icons/ai';
+import { NavLink } from 'react-router-dom';
 import logo from '../assets/logo.gif';
 import navbarItems from '../data';
 
@@ -8,10 +9,10 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="flex max-h-[90vh]">
+      <div className="flex max-h-[95vh]">
         <div
           className={`${
-            open ? 'w-56' : 'w-20'
+            open ? 'w-56' : 'w-10'
           } h-screen border-r-2 border-slate-300 bg-white relative duration-300 `}
         >
           <AiOutlineBars
@@ -22,7 +23,7 @@ const Navbar = () => {
           />
           <div
             className={`${
-              open ? 'w-36' : 'w-20'
+              open ? 'w-36' : 'w-10'
             } cursor-pointer duration-300 my-4 mx-auto border-rounded`}
           >
             <img src={logo} alt="logo" />
@@ -30,11 +31,12 @@ const Navbar = () => {
           <nav>
             <ul className="pt-6">
               {navbarItems.map((item) => (
-                <li
+                <NavLink
                   key={item.name}
                   className={`text-white text-sm flex items-center duration-500 gap-x-4 cursor-pointer p-2 hover:bg-gray-400 rounded-bl-lg ${
                     item.gap ? 'mt-9' : 'mt-2'
                   }`}
+                  to={item.path}
                 >
                   <span className="text-black font-extrabold text-xl">
                     {item.icon}
@@ -46,13 +48,10 @@ const Navbar = () => {
                   >
                     {item.name}
                   </span>
-                </li>
+                </NavLink>
               ))}
             </ul>
           </nav>
-        </div>
-        <div className="p-7 text-2xl font-semibold flex-1 h-screen">
-          <h1>Homepage</h1>
         </div>
       </div>
     </>
