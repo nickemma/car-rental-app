@@ -1,6 +1,8 @@
 import { GrUpdate } from 'react-icons/gr';
 import { BsBookHalf } from 'react-icons/bs';
-import { AiFillCar } from 'react-icons/ai';
+import {
+  AiFillCar, AiFillFacebook, AiFillGithub, AiFillLinkedin, AiFillTwitterCircle, AiFillYoutube,
+} from 'react-icons/ai';
 import { FaUsers } from 'react-icons/fa';
 import { BiLogInCircle } from 'react-icons/bi';
 
@@ -38,18 +40,18 @@ export const auth = [
 
 export const socialIcons = [
   {
-    icon: <FaUsers />,
+    icon: <AiFillYoutube />,
   },
   {
-    icon: <FaUsers />,
+    icon: <AiFillTwitterCircle />,
   },
   {
-    icon: <FaUsers />,
+    icon: <AiFillLinkedin />,
   },
   {
-    icon: <FaUsers />,
+    icon: <AiFillGithub />,
   },
   {
-    icon: <FaUsers />,
+    icon: <AiFillFacebook />,
   },
 ];

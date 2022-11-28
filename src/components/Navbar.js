@@ -130,8 +130,10 @@ const Navbar = () => {
                 </button>
               </ul>
             )}
-            <div>
-              <ul className="pt-6 flex flex-row">
+            <div className='mt-[6rem] flex flex-col items-center'>
+              <ul className={`pt-6 flex items-center
+              ${!open ? 'flex-col' : 'flex-row'}
+              `}>
                 {socialIcons.map((icons, index) => (
                   <li
                     key={index}
@@ -145,7 +147,11 @@ const Navbar = () => {
                   </li>
                 ))}
               </ul>
-              <p>Microverse Copyright 2022</p>
+              <p
+                className={`${
+                  !open && 'hidden'
+                } origin-left duration-200 text-sm mx-3 font-medium`}
+              >Microverse Copyright 2022</p>
             </div>
           </nav>
         </div>

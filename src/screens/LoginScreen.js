@@ -72,7 +72,10 @@ const LoginScreen = () => {
             Email
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className={`shadow appearance-none border rounded 
+            w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
+            ${submited && !email ? 'border-red-500 border-2' : ''}
+            `}
             id="email"
             type="email"
             placeholder="Email"
@@ -90,7 +93,10 @@ const LoginScreen = () => {
             Password
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+            className={`shadow appearance-none border rounded 
+            w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
+            ${submited && !password ? 'border-red-500 border-2' : ''}
+            `}
             id="password"
             type="password"
             placeholder="**********"
@@ -98,7 +104,7 @@ const LoginScreen = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          {passwordError && <InlineError error={passwordError} />}
+          {passwordError && password && <InlineError error={passwordError} />}
         </div>
         <div className="flex items-center justify-center">
           <button

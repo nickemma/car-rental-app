@@ -3,19 +3,25 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
 import { DatePicker } from 'react-responsive-datepicker';
 import 'react-responsive-datepicker/dist/index.css';
 import Loader from '../components/Loader';
+import 'react-toastify/dist/ReactToastify.css';
 import InlineError from '../components/InlineError';
 import { register } from '../redux/actions/UserAction';
+import { validateEmail, validateFullName, validatePassword } from '../components/validation';
 
 const RegisterScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [date, setDate] = useState(new Date());
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [nameError, setNameError] = useState('');
+  const [dateError, setDateError] = useState('');
   const [submited, setSubmited] = useState(false);
-  const [errors, setErrors] = useState({});
   const [valid, setValid] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [avatar, setAvatar] = useState(null);
@@ -41,7 +47,13 @@ const RegisterScreen = () => {
     formData.append('password', password);
     formData.append('avatar', avatar);
     formData.append('date_of_birth', date);
-    dispatch(register(formData));
+    setSubmited(true);
+    if (valid) {
+      dispatch(register(formData));
+      toast.success('Register successful');
+    } else {
+      toast.error('Please fill all the fields');
+    }
   };
 
   const navigate = useNavigate();
@@ -50,13 +62,24 @@ const RegisterScreen = () => {
   const { loading, error, userInfo } = userRegister;
 
   useEffect(() => {
+    validateEmail({ email, setEmailError});
+    validateFullName({ name, setNameError});
+    validatePassword({ password, setPasswordError });
+
+    if (emailError || passwordError || nameError || dateError || !email || !password || !name || !date) {
+      setValid(false);
+    } else {
+      setValid(true);
+    }
+
     if (userInfo) {
       navigate('/login');
     }
-  }, [navigate, userInfo]);
+  }, [emailError, passwordError, nameError, dateError, userInfo, navigate, email, password, name, date]);
 
   return (
     <div>
+      <ToastContainer />
       {error && <div>{error}</div>}
       {loading && <Loader />}
       <form
@@ -86,7 +109,10 @@ const RegisterScreen = () => {
             FullName
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className={`shadow appearance-none border rounded 
+            w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
+            ${submited && !name ? 'border-red-500 border-2' : ''}
+            `}
             id="username"
             type="name"
             placeholder="FullName"
@@ -102,7 +128,10 @@ const RegisterScreen = () => {
             Email
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className={`shadow appearance-none border rounded 
+            w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
+            ${submited && !email ? 'border-red-500 border-2' : ''}
+            `}
             id="email"
             type="email"
             placeholder="Email"
@@ -122,7 +151,9 @@ const RegisterScreen = () => {
             value={dateFormat(date)}
             readOnly
             onClick={() => setIsOpen(true)}
-            className="shadow cursor-pointer appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className={`shadow appearance-none border rounded 
+            w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
+            `}
           />
           <DatePicker
             value={date}
@@ -133,6 +164,8 @@ const RegisterScreen = () => {
             maxDate={new Date(2023, 0, 10)}
             headerFormat="DD MM dd"
           />
+
+          {submited && dateError && <InlineError error={dateError} />}
         </div>
         <div className="mb-4">
           <label
@@ -142,7 +175,10 @@ const RegisterScreen = () => {
             Password
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+            className={`shadow appearance-none border rounded 
+            w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
+            ${submited && !password ? 'border-red-500 border-2' : ''}
+            `}
             id="password"
             type="password"
             placeholder="******************"
