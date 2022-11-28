@@ -24,7 +24,7 @@ const Navbar = () => {
       <div className="flex max-h-[95vh]">
         <div
           className={`${
-            open ? 'w-56' : 'w-12'
+            open ? 'w-48' : 'w-12'
           } h-screen border-r-2 border-slate-300 bg-white relative duration-300 `}
         >
           <AiOutlineBars
