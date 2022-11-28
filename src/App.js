@@ -1,7 +1,11 @@
+import LoginScreen from './screens/LoginScreen';
+import RegisterScreen from './screens/RegisterScreen';
+
 function App() {
   return (
     <div className="App">
-      <h1>My React App</h1>
+      <LoginScreen />
+      <RegisterScreen />
     </div>
   );
 }
