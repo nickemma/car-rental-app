@@ -4,10 +4,9 @@ import { CgLogOut } from 'react-icons/cg';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import logo from '../assets/logo.gif';
-import { auth, navbarItems } from '../data';
+import { auth, navbarItems, socialIcons } from '../data';
 import { logout } from '../redux/actions/UserAction';
 import { FiChevronsLeft } from 'react-icons/fi';
-
 
 const Navbar = () => {
   const [open, setOpen] = useState(true);
@@ -44,13 +43,11 @@ const Navbar = () => {
           {userInfo ? (
             <div className="flex flex-row items-center mt-[5rem]">
               {/* call avatar */}
-              <div className={`flex items-center justify-center  rounded-full bg-white ml-1
-              ${
-                open
-                  ? 'w-[55px] h-[55px]'
-                  : 'w-[40px] h-[40px]'
-              }
-              `}>
+              <div
+                className={`flex items-center justify-center  rounded-full bg-white ml-1
+              ${open ? 'w-[55px] h-[55px]' : 'w-[40px] h-[40px]'}
+              `}
+              >
                 <img
                   src={userInfo?.avatar?.url}
                   alt="avatar"
@@ -95,7 +92,7 @@ const Navbar = () => {
                 {auth.map((item) => (
                   <NavLink
                     key={item.name}
-                    className={`text-white text-sm flex items-center duration-500 gap-x-4 cursor-pointer p-2 hover:bg-gray-400 rounded-bl-lg ${
+                    className={`text-white text-sm flex items-center duration-500 gap-x-4 cursor-pointer p-2 hover:bg-gray-500 rounded-bl-lg ${
                       item.gap ? 'mt-9' : 'mt-2'
                     }`}
                     to={item.path}
@@ -133,6 +130,23 @@ const Navbar = () => {
                 </button>
               </ul>
             )}
+            <div>
+              <ul className="pt-6 flex flex-row">
+                {socialIcons.map((icons, index) => (
+                  <li
+                    key={index}
+                    className={`text-white text-sm flex items-center duration-500 gap-x-4 cursor-pointer p-2 hover:bg-gray-400 rounded-bl-lg ${
+                      icons.gap ? 'mt-9' : 'mt-2'
+                    }`}
+                  >
+                    <span className="text-black font-extrabold text-xl ml-1 ">
+                      {icons.icon}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <p>Microverse Copyright 2022</p>
+            </div>
           </nav>
         </div>
       </div>

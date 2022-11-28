@@ -35,3 +35,21 @@ export const auth = [
     icon: <FaUsers />,
   },
 ];
+
+export const socialIcons = [
+  {
+    icon: <FaUsers />,
+  },
+  {
+    icon: <FaUsers />,
+  },
+  {
+    icon: <FaUsers />,
+  },
+  {
+    icon: <FaUsers />,
+  },
+  {
+    icon: <FaUsers />,
+  },
+];
