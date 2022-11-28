@@ -1,5 +1,5 @@
-import React from 'react';
+// import React from 'react';
 
-const HomeScreen = () => <div>HomeScreen</div>;
+// const HomeScreen = () => <div>HomeScreen</div>;
 
-export default HomeScreen;
+// export default HomeScreen;
