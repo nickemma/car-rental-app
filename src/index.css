@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.login {
+  min-width: 400px;
+}
+
+.register {
+  min-width: 400px;
+}
