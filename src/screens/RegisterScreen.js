@@ -10,25 +10,30 @@ import Loader from '../components/Loader';
 import 'react-toastify/dist/ReactToastify.css';
 import InlineError from '../components/InlineError';
 import { register } from '../redux/actions/UserAction';
-import { validateEmail, validateFullName, validatePassword } from '../components/validation';
+import {
+  validateAge,
+  validateEmail,
+  validateFullName,
+  validatePassword,
+} from '../components/validation';
 
 const RegisterScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
-  const [date, setDate] = useState(new Date());
+  const [fullName, setFullName] = useState('');
+  const [age, setAge] = useState(new Date());
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
-  const [nameError, setNameError] = useState('');
-  const [dateError, setDateError] = useState('');
+  const [fullNameError, setFullNameError] = useState('');
+  const [ageError, setAgeError] = useState('');
   const [submited, setSubmited] = useState(false);
   const [valid, setValid] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [avatar, setAvatar] = useState(null);
 
   // add date format
-  const dateFormat = (date) => {
-    const d = new Date(date);
+  const dateFormat = (age) => {
+    const d = new Date(age);
     const day = d.getDate();
     const month = d.getMonth() + 1;
     const year = d.getFullYear();
@@ -42,11 +47,11 @@ const RegisterScreen = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append('name', name);
+    formData.append('name', fullName);
     formData.append('email', email);
     formData.append('password', password);
     formData.append('avatar', avatar);
-    formData.append('date_of_birth', date);
+    formData.append('date_of_birth', age);
     setSubmited(true);
     if (valid) {
       dispatch(register(formData));
@@ -62,11 +67,21 @@ const RegisterScreen = () => {
   const { loading, error, userInfo } = userRegister;
 
   useEffect(() => {
-    validateEmail({ email, setEmailError});
-    validateFullName({ name, setNameError});
+    validateEmail({ email, setEmailError });
+    validateFullName({ fullName, setFullNameError });
     validatePassword({ password, setPasswordError });
+    validateAge({ age, setAgeError });
 
-    if (emailError || passwordError || nameError || dateError || !email || !password || !name || !date) {
+    if (
+      emailError ||
+      passwordError ||
+      fullNameError ||
+      ageError ||
+      !email ||
+      !password ||
+      !fullName ||
+      !age
+    ) {
       setValid(false);
     } else {
       setValid(true);
@@ -75,7 +90,18 @@ const RegisterScreen = () => {
     if (userInfo) {
       navigate('/login');
     }
-  }, [emailError, passwordError, nameError, dateError, userInfo, navigate, email, password, name, date]);
+  }, [
+    emailError,
+    passwordError,
+    fullNameError,
+    ageError,
+    userInfo,
+    navigate,
+    email,
+    password,
+    fullName,
+    age,
+  ]);
 
   return (
     <div>
@@ -111,13 +137,13 @@ const RegisterScreen = () => {
           <input
             className={`shadow appearance-none border rounded 
             w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
-            ${submited && !name ? 'border-red-500 border-2' : ''}
+            ${submited && !fullName ? 'border-red-500 border-2' : ''}
             `}
             id="username"
             type="name"
             placeholder="FullName"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
           />
         </div>
         <div className="mb-4">
@@ -148,7 +174,7 @@ const RegisterScreen = () => {
           </label>
           <input
             type="text"
-            value={dateFormat(date)}
+            value={dateFormat(age)}
             readOnly
             onClick={() => setIsOpen(true)}
             className={`shadow appearance-none border rounded 
@@ -156,8 +182,8 @@ const RegisterScreen = () => {
             `}
           />
           <DatePicker
-            value={date}
-            onChange={(date) => setDate(date)}
+            value={age}
+            onChange={(age) => setAge(age)}
             isOpen={isOpen}
             onClose={() => setIsOpen(false)}
             defaultValue={new Date(2022, 8, 8)}
@@ -165,7 +191,7 @@ const RegisterScreen = () => {
             headerFormat="DD MM dd"
           />
 
-          {submited && dateError && <InlineError error={dateError} />}
+          {submited && ageError && <InlineError error={ageError} />}
         </div>
         <div className="mb-4">
           <label

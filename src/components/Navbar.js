@@ -41,7 +41,7 @@ const Navbar = () => {
             <img src={logo} alt="logo" />
           </div>
           {userInfo ? (
-            <div className="flex flex-row items-center mt-[5rem]">
+            <div className="flex flex-row items-center mt-[3rem]">
               {/* call avatar */}
               <div
                 className={`flex items-center justify-center  rounded-full bg-white ml-1
@@ -130,10 +130,12 @@ const Navbar = () => {
                 </button>
               </ul>
             )}
-            <div className='mt-[6rem] flex flex-col items-center'>
-              <ul className={`pt-6 flex items-center
+            <div className="flex flex-col items-center">
+              <ul
+                className={`pt-6 flex items-center
               ${!open ? 'flex-col' : 'flex-row'}
-              `}>
+              `}
+              >
                 {socialIcons.map((icons, index) => (
                   <li
                     key={index}
@@ -151,7 +153,9 @@ const Navbar = () => {
                 className={`${
                   !open && 'hidden'
                 } origin-left duration-200 text-sm mx-3 font-medium`}
-              >Microverse Copyright 2022</p>
+              >
+                Microverse Copyright 2022
+              </p>
             </div>
           </nav>
         </div>
