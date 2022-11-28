@@ -3,36 +3,24 @@ import axios from 'axios';
 
 const getCars = () => async (dispatch) => {
   try {
-    dispatch({ type: types.GET_CARS_REQUEST });
-
     const config = {
       headers: {
         'Content-Type': 'application/json',
         accept: 'application/json',
       },
     };
-
     const { data } = await axios.get('http://localhost:5000/products', config);
-
     dispatch({
-      type: types.GET_CARS_SUCCESS,
+      type: types.GET_CARS,
       payload: data,
     });
   } catch (error) {
-    dispatch({
-      type: types.GET_CARS_FAIL,
-      payload:
-        error.response && error.response.data.error
-          ? error.response.data.error
-          : error.error,
-    });
+    console.log(error);
   }
 };
 
 const deleteCar = (id) => async (dispatch) => {
   try {
-    dispatch({ type: types.DELETE_CAR_REQUEST });
-
     const config = {
       headers: {
         'Content-Type': 'application/json',
@@ -46,13 +34,7 @@ const deleteCar = (id) => async (dispatch) => {
       payload: id,
     });
   } catch (error) {
-    dispatch({
-      type: types.DELETE_CAR_FAIL,
-      payload:
-        error.response && error.response.data.error
-          ? error.response.data.error
-          : error.error,
-    });
+    console.log(error);
   }
 };
 

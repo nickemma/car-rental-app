@@ -1,6 +1,2 @@
-export const GET_CARS_REQUEST = 'GET_CARS_REQUEST';
-export const GET_CARS_SUCCESS = 'GET_CARS_SUCCESS';
-export const GET_CARS_FAIL = 'GET_CARS_FAIL';
-export const DELETE_CAR_REQUEST = 'DELETE_CAR_REQUEST';
-export const DELETE_CAR_SUCCESS = 'DELETE_CAR_SUCCESS';
-export const DELETE_CAR_FAIL = 'DELETE_CAR_FAIL';
+export const GET_CARS = 'GET_CARS';
+export const DELETE_CAR = 'DELETE_CAR';

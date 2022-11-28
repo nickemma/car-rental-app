@@ -6,7 +6,6 @@ const AddCarScreen = () => {
   const dispatch = useDispatch();
 
   const { cars } = useSelector((state) => state.carList);
-  // const { loading, error, cars } = Cars;
 
   const handleDelete = (id) => {
     dispatch(deleteCar(id));
