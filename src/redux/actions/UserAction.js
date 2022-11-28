@@ -15,13 +15,14 @@ const login = (email, password) => async (dispatch) => {
     const { data } = await axios.post(
       'http://localhost:3000/auth',
       { email, password },
-      config
+      config,
     );
 
     dispatch({
       type: types.USER_LOGIN_SUCCESS,
       payload: data,
     });
+    localStorage.setItem('userInfo', JSON.stringify(data));
   } catch (error) {
     dispatch({
       type: types.USER_LOGIN_FAIL,
@@ -52,6 +53,7 @@ const register = (formData) => async (dispatch) => {
       type: types.USER_REGISTER_SUCCESS,
       payload: data,
     });
+    localStorage.setItem('userInfo', JSON.stringify(data));
   } catch (error) {
     dispatch({
       type: types.USER_REGISTER_FAIL,
@@ -64,6 +66,7 @@ const register = (formData) => async (dispatch) => {
 };
 
 const logout = () => (dispatch) => {
+  localStorage.removeItem('userInfo');
   dispatch({ type: types.USER_LOGOUT });
 };
 
