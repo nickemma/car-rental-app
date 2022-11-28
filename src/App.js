@@ -1,8 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import HomeScreen from './screens/HomeScreen';
-import LoginScreen from './screens/LoginScreen';
-import RegisterScreen from './screens/RegisterScreen';
+// import LoginScreen from './screens/LoginScreen';
+// import RegisterScreen from './screens/RegisterScreen';
+import AddCarScreen from './screens/AddCarScreen';
 
 function App() {
   return (
@@ -11,8 +12,9 @@ function App() {
       <div className="m-auto">
         <Routes>
           <Route path="/" element={<HomeScreen />} />
-          <Route path="/login" element={<LoginScreen />} />
-          <Route path="/register" element={<RegisterScreen />} />
+          {/* <Route path="/login" element={<LoginScreen />} />
+          <Route path="/register" element={<RegisterScreen />} /> */}
+          <Route path="/cars" element={<AddCarScreen />} />
         </Routes>
       </div>
     </div>

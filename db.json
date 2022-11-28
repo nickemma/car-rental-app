@@ -1,0 +1,49 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Lexus",
+      "car_type": "SUV",
+      "description": "Lexus is a luxury vehicle brand of Toyota, the Japanese automaker. The Lexus marque is marketed in more than 70 countries and territories worldwide and has become Japan's largest-selling make of premium cars. It has ranked among the 10 largest Japanese global brands in market value. Lexus is headquartered in Nagoya, Japan. Operational centers are located in Brussels, Belgium, and southern California. In 2013, Lexus was the 18th largest brand in the world, with global sales of 319,905 units.",
+      "brand": "Lexus",
+      "daily_rate": 3.99,
+      "image": "https://images.pexels.com/photos/5581195/pexels-photo-5581195.jpeg"
+    },
+    {
+      "id": 2,
+      "name": "Toyota",
+      "car_type": "SUV",
+      "description": "Toyota Motor Corporation is a Japanese multinational automotive manufacturer headquartered in Toyota, Aichi, Japan. In 2017, Toyota's corporate structure consisted of 364,445 employees worldwide and, as of December 2019, was the tenth-largest company in the world by revenue. Toyota is the largest automobile manufacturer in Japan and the second-largest in the world, behind German Volkswagen Group. Toyota was the world's first automobile manufacturer to produce more than 10 million vehicles per year which it has done since 2012, when it also reported the production of its 200-millionth vehicle. As of July 2014, Toyota was the largest listed company in Japan by market capitalization (worth more than twice as much as #2-ranked SoftBank) and by revenue.",
+      "brand": "Toyota",
+      "daily_rate": 2.99,
+      "image": "https://images.pexels.com/photos/7725068/pexels-photo-7725068.jpeg"
+    },
+    {
+      "id": 3,
+      "name": "BMW",
+      "car_type": "SUV",
+      "description": "BMW is a German multinational company which currently produces automobiles and motorcycles, and also produced aircraft engines until 1945. The company was founded in 1916 as a manufacturer of aircraft engines, which it produced from 1917 until 1945. The firm produces luxury automobiles and motorcycles under the BMW brand, and also produced aircraft engines until 1945. The company is one of the best-selling luxury automakers in the world, with global sales of over 2.5 million vehicles in 2019.",
+      "brand": "BMW",
+      "daily_rate": 4.99,
+      "image": "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg"
+    },
+    {
+      "id": 4,
+      "name": "Mercedes",
+      "car_type": "SUV",
+      "description": "Mercedes-Benz is a German global automobile marque and a division of Daimler AG. The brand is known for luxury vehicles, buses, coaches, and lorries. The headquarters is in Stuttgart, Baden-Württemberg. The name first appeared in 1926 under Daimler-Benz. In 2018, Mercedes-Benz was the biggest selling premium vehicle brand in the world, having sold 2.31 million passenger cars. The company's origins come from Daimler-Motoren-Gesellschaft's 1901 Mercedes and Karl Benz's 1886 Benz Patent-Motorwagen, which is widely regarded as the first gasoline-powered automobile. The slogan for the brand is the best or nothing.",
+      "brand": "Mercedes",
+      "daily_rate": 5.99,
+      "image": "https://images.pexels.com/photos/11396006/pexels-photo-11396006.jpeg"
+    },
+    {
+      "id": 5,
+      "name": "Audi",
+      "car_type": "SUV",
+      "description": "Audi is a German automobile manufacturer that designs, engineers, produces, markets and distributes luxury vehicles. Audi oversees worldwide operations from its headquarters in Ingolstadt, Bavaria, Germany. Audi-branded vehicles are produced in nine production facilities worldwide. The origins of the company are complex, going back to the early 20th century and the initial enterprises (Horch and the Audiwerke) founded by engineer August Horch; and two other manufacturers (DKW and Wanderer), leading to the foundation of Auto Union in 1932. The modern era of Audi essentially began in the 1960s when Auto Union was acquired by Volkswagen from Daimler-Benz. After relaunching the Audi brand with the 1965 introduction of the Audi F103 series, Volkswagen merged Auto Union with NSU Motorenwerke in 1969, thus creating the present day form of the company.",
+      "brand": "Audi",
+      "daily_rate": 6.99,
+      "image": "https://images.pexels.com/photos/13207692/pexels-photo-13207692.jpeg"
+    }
+  ]
+}
