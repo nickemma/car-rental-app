@@ -20,7 +20,6 @@ const RegisterScreen = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [avatar, setAvatar] = useState(null);
 
-
   // add date format
   const dateFormat = (date) => {
     const d = new Date(date);
@@ -54,9 +53,6 @@ const RegisterScreen = () => {
     if (userInfo) {
       navigate('/login');
     }
-
-    
-
   }, [navigate, userInfo]);
 
   return (

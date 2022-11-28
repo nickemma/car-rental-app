@@ -24,7 +24,7 @@ const Navbar = () => {
       <div className="flex max-h-[95vh]">
         <div
           className={`${
-            open ? 'w-56' : 'w-10'
+            open ? 'w-56' : 'w-12'
           } h-screen border-r-2 border-slate-300 bg-white relative duration-300 `}
         >
           <AiOutlineBars
@@ -35,7 +35,7 @@ const Navbar = () => {
           />
           <div
             className={`${
-              open ? 'w-36' : 'w-10'
+              open ? 'w-36' : 'w-12'
             } cursor-pointer duration-300 my-4 mx-auto border-rounded`}
           >
             <img src={logo} alt="logo" />
@@ -47,10 +47,16 @@ const Navbar = () => {
                 <img
                   src={userInfo?.avatar.url}
                   alt="avatar"
-                  className="w-20 h-20 rounded-full"
+                  className="w-full h-full object-cover rounded-full"
                 />
               </div>
-              <p className="text-sm font-medium">{userInfo?.name}</p>
+              <p
+                className={`${
+                  !open && 'hidden'
+                } origin-left duration-200 text-sm mx-3 font-medium`}
+              >
+                {userInfo?.name}
+              </p>
             </div>
           ) : null}
 
