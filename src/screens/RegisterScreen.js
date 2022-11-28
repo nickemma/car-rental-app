@@ -103,6 +103,9 @@ const RegisterScreen = () => {
     age,
   ]);
 
+  const handleSubmitt = (e) => {
+    e.preventDefault();
+  }
   return (
     <div>
       <ToastContainer />
@@ -110,7 +113,7 @@ const RegisterScreen = () => {
       {loading && <Loader />}
       <form
         className="register shadow-md rounded px-8 pt-6 pb-4 mb-4 w-full max-w-sm mx-auto"
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmitt}
       >
         <div className="mb-4">
           <label
@@ -219,6 +222,7 @@ const RegisterScreen = () => {
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
+            onClick={handleSubmit}
           >
             Sign up
           </button>

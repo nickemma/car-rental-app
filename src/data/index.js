@@ -55,3 +55,16 @@ export const socialIcons = [
     icon: <AiFillFacebook />,
   },
 ];
+
+export const NavItemsAdmin = [
+  {
+    name: 'Add Cars',
+    path: '/cars',
+    icon: <GrUpdate />,
+  },
+  {
+    name: 'Users',
+    path: '/users',
+    icon: <AiFillCar />,
+  },
+];
