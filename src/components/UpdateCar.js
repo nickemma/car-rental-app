@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { updateCar } from '../redux/actions/CarAction';
 
 const UpdateCar = () => {
@@ -12,6 +12,7 @@ const UpdateCar = () => {
   const [brand, setBrand] = useState('');
   const [dailyrate, setDailyrate] = useState('');
   const [valid, setValid] = useState(false);
+  const { carId } = useParams();
 
   const dispatch = useDispatch();
 
@@ -47,7 +48,7 @@ const UpdateCar = () => {
     formData.append('brand', brand);
     formData.append('daily_rate', dailyrate);
     if (valid) {
-      dispatch(updateCar(formData));
+      dispatch(updateCar(formData), carId);
       Navigate('/cars');
     }
   };
@@ -56,7 +57,10 @@ const UpdateCar = () => {
       <form onSubmit={handleSubmit} className="w-full max-w-lg">
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full px-3">
-            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="name">
+            <label
+              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              htmlFor="name"
+            >
               Name
             </label>
             <input
@@ -71,7 +75,10 @@ const UpdateCar = () => {
         </div>
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full px-3">
-            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="image">
+            <label
+              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              htmlFor="image"
+            >
               Image
             </label>
             <input
@@ -85,7 +92,10 @@ const UpdateCar = () => {
         </div>
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full px-3">
-            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="type">
+            <label
+              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              htmlFor="type"
+            >
               Type
             </label>
             <input
@@ -100,7 +110,10 @@ const UpdateCar = () => {
         </div>
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full px-3">
-            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="description">
+            <label
+              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              htmlFor="description"
+            >
               Description
             </label>
             <textarea
@@ -115,7 +128,10 @@ const UpdateCar = () => {
         </div>
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full px-3">
-            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="brand">
+            <label
+              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              htmlFor="brand"
+            >
               Brand
             </label>
             <input
@@ -130,7 +146,10 @@ const UpdateCar = () => {
         </div>
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full px-3">
-            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="daily_rate">
+            <label
+              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              htmlFor="daily_rate"
+            >
               Daily Rate
             </label>
             <input
@@ -149,12 +168,11 @@ const UpdateCar = () => {
               className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
               type="submit"
             >
-              Add Car
+              Edit Car
             </button>
           </div>
         </div>
       </form>
-
     </>
   );
 };

@@ -1,7 +1,12 @@
 import { GrUpdate } from 'react-icons/gr';
 import { BsBookHalf } from 'react-icons/bs';
 import {
-  AiFillCar, AiFillFacebook, AiFillGithub, AiFillLinkedin, AiFillTwitterCircle, AiFillYoutube,
+  AiFillCar,
+  AiFillFacebook,
+  AiFillGithub,
+  AiFillLinkedin,
+  AiFillTwitterCircle,
+  AiFillYoutube,
 } from 'react-icons/ai';
 import { FaUsers } from 'react-icons/fa';
 import { BiLogInCircle } from 'react-icons/bi';
@@ -60,11 +65,11 @@ export const NavItemsAdmin = [
   {
     name: 'Add Cars',
     path: '/cars',
-    icon: <GrUpdate />,
+    icon: <AiFillCar />,
   },
   {
     name: 'Users',
     path: '/users',
-    icon: <AiFillCar />,
+    icon: <FaUsers />,
   },
 ];
