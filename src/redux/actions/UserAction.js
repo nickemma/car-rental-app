@@ -44,7 +44,7 @@ const register = (formData) => async (dispatch) => {
 
     const { data } = await axios({
       method: 'post',
-      url: 'http://localhost:3000/users',
+      url: 'http://localhost:5000/userslist',
       data: formData,
       config,
     });

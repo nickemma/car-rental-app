@@ -49,7 +49,7 @@ const addCar = (car) => async (dispatch) => {
     const { data } = await axios.post(
       'http://localhost:5000/products',
       car,
-      config
+      config,
     );
     dispatch({
       type: types.ADD_CAR,
