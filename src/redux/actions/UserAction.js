@@ -70,4 +70,41 @@ const logout = () => (dispatch) => {
   dispatch({ type: types.USER_LOGOUT });
 };
 
-export { login, register, logout };
+// userList actions
+
+const listUsers = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: types.USER_LIST_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    const { data } = await axios.get('http://localhost:3000/users', config);
+
+    dispatch({
+      type: types.USER_LIST_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: types.USER_LIST_FAIL,
+      payload:
+        error.response && error.response.data.error
+          ? error.response.data.error
+          : error.error,
+    });
+  }
+};
+
+export {
+  login, register, logout, listUsers,
+};
