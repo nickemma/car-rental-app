@@ -60,4 +60,26 @@ const addCar = (car) => async (dispatch) => {
   }
 };
 
-export { getCars, deleteCar, addCar };
+const updateCar = (car) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        accept: 'application/json',
+      },
+    };
+    const { data } = await axios.put(
+      `http://localhost:5000/products/${car.id}`,
+      car,
+      config
+    );
+    dispatch({
+      type: types.UPDATE_CAR,
+      payload: data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { getCars, deleteCar, addCar, updateCar };
