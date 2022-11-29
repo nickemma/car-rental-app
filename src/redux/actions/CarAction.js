@@ -1,5 +1,5 @@
-import * as types from '../constants/carConstants';
 import axios from 'axios';
+import * as types from '../constants/carConstants';
 
 const getCars = () => async (dispatch) => {
   try {
@@ -30,7 +30,7 @@ const deleteCar = (id) => async (dispatch) => {
     await axios.delete(`http://localhost:5000/products/${id}`, config);
 
     dispatch({
-      type: types.DELETE_CAR_SUCCESS,
+      type: types.DELETE_CAR,
       payload: id,
     });
   } catch (error) {

@@ -16,6 +16,12 @@ const carReducer = (state = initialState, action) => {
         cars: state.cars.filter((car) => car.id !== action.payload),
         loading: false,
       };
+    case types.ADD_CAR:
+      return {
+        ...state,
+        cars: [...state.cars, action.payload],
+        loading: false,
+      };
     default:
       return state;
   }

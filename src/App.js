@@ -4,6 +4,7 @@ import HomeScreen from './screens/HomeScreen';
 // import LoginScreen from './screens/LoginScreen';
 // import RegisterScreen from './screens/RegisterScreen';
 import AddCarScreen from './screens/AddCarScreen';
+import AddCar from './components/AddCar';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           {/* <Route path="/login" element={<LoginScreen />} />
           <Route path="/register" element={<RegisterScreen />} /> */}
           <Route path="/cars" element={<AddCarScreen />} />
+          <Route path="/addCar" element={<AddCar />} />
         </Routes>
       </div>
     </div>
