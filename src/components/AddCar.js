@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { addCar } from '../redux/actions/CarAction';
 
 const AddCar = () => {
@@ -10,9 +11,11 @@ const AddCar = () => {
   const [description, setDescription] = useState('');
   const [brand, setBrand] = useState('');
   const [dailyrate, setDailyrate] = useState('');
+  const [valid, setValid] = useState(false);
 
   const dispatch = useDispatch();
 
+  const Navigate = useNavigate();
   // handleuploadimage
   const handleUploadImage = (e) => {
     const file = e.target.files[0];
@@ -23,6 +26,14 @@ const AddCar = () => {
     reader.readAsDataURL(file);
   };
 
+  useEffect(() => {
+    if (name && image && type && description && brand && dailyrate) {
+      setValid(true);
+    } else {
+      setValid(false);
+    }
+  }, [name, image, type, description, brand, dailyrate]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -32,7 +43,10 @@ const AddCar = () => {
     formData.append('description', description);
     formData.append('brand', brand);
     formData.append('daily_rate', dailyrate);
-    dispatch(addCar(formData));
+    if (valid) {
+      dispatch(addCar(formData));
+      Navigate('/cars');
+    }
   };
   console.log('Addcar');
   return (

@@ -71,7 +71,7 @@ const updateCar = (car) => async (dispatch) => {
     const { data } = await axios.put(
       `http://localhost:5000/products/${car.id}`,
       car,
-      config
+      config,
     );
     dispatch({
       type: types.UPDATE_CAR,
@@ -82,4 +82,6 @@ const updateCar = (car) => async (dispatch) => {
   }
 };
 
-export { getCars, deleteCar, addCar, updateCar };
+export {
+  getCars, deleteCar, addCar, updateCar,
+};

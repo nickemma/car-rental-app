@@ -5,6 +5,7 @@ import HomeScreen from './screens/HomeScreen';
 // import RegisterScreen from './screens/RegisterScreen';
 import AddCarScreen from './screens/AddCarScreen';
 import AddCar from './components/AddCar';
+import UpdateCar from './components/UpdateCar';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/register" element={<RegisterScreen />} /> */}
           <Route path="/cars" element={<AddCarScreen />} />
           <Route path="/addCar" element={<AddCar />} />
+          <Route path="/editCar/:id" element={<UpdateCar />} />
         </Routes>
       </div>
     </div>
