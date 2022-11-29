@@ -22,6 +22,14 @@ const carReducer = (state = initialState, action) => {
         cars: [...state.cars, action.payload],
         loading: false,
       };
+    case types.UPDATE_CAR:
+      return {
+        ...state,
+        cars: state.cars.map((car) =>
+          car.id === action.payload.id ? action.payload : car
+        ),
+        loading: false,
+      };
     default:
       return state;
   }
