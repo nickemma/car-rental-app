@@ -49,7 +49,7 @@ const addCar = (car) => async (dispatch) => {
     const { data } = await axios.post(
       'http://localhost:5000/products',
       car,
-      config
+      config,
     );
     dispatch({
       type: types.ADD_CAR,
@@ -60,8 +60,9 @@ const addCar = (car) => async (dispatch) => {
   }
 };
 
-const updateCar = (carId) => async (dispatch) => {
+const updateCar = (carId, car) => async (dispatch) => {
   try {
+    console.log(carId.id);
     const config = {
       headers: {
         'Content-Type': 'application/json',
@@ -69,9 +70,9 @@ const updateCar = (carId) => async (dispatch) => {
       },
     };
     const { data } = await axios.put(
-      `http://localhost:5000/products/${car.id}`,
-      carId,
-      config
+      `http://localhost:5000/products/${carId.id}`,
+      car,
+      config,
     );
     dispatch({
       type: types.UPDATE_CAR,
@@ -82,4 +83,6 @@ const updateCar = (carId) => async (dispatch) => {
   }
 };
 
-export { getCars, deleteCar, addCar, updateCar };
+export {
+  getCars, deleteCar, addCar, updateCar,
+};

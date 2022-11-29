@@ -36,7 +36,7 @@ const Navbar = () => {
           />
           <div
             className={`${
-              open ? "w-36" : "w-12"
+              open ? 'w-20' : 'w-12'
             } cursor-pointer duration-300 my-4 mx-auto border-rounded`}
           >
             <img src={logo} alt="logo" />
@@ -177,7 +177,11 @@ const Navbar = () => {
                       icons.gap ? "mt-9" : "mt-2"
                     }`}
                   >
-                    <span className="text-black font-extrabold text-xl ml-1 ">
+                    <span className={`text-black font-extrabold text-xl ml-1  
+                     ${
+                      !open && "hidden"
+                     }`
+                    }>
                       {icons.icon}
                     </span>
                   </li>

@@ -21,6 +21,7 @@
     "react-bootstrap": "^2.6.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.6.0",
+    "react-paginate": "^8.1.4",
     "react-redux": "^8.0.5",
     "react-responsive-datepicker": "^1.0.6",
     "react-router-dom": "^6.4.3",

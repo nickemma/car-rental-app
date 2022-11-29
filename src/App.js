@@ -3,9 +3,9 @@ import Navbar from './components/Navbar';
 import HomeScreen from './screens/HomeScreen';
 // import LoginScreen from './screens/LoginScreen';
 // import RegisterScreen from './screens/RegisterScreen';
-import AddCarScreen from './screens/AddCarScreen';
 import AddCar from './components/AddCar';
 import UpdateCar from './components/UpdateCar';
+import CarsScreen from './screens/CarsScreen';
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
           <Route path="/" element={<HomeScreen />} />
           {/* <Route path="/login" element={<LoginScreen />} />
           <Route path="/register" element={<RegisterScreen />} /> */}
-          <Route path="/cars" element={<AddCarScreen />} />
+          <Route path="/cars" element={<CarsScreen />} />
           <Route path="/addCar" element={<AddCar />} />
           <Route path="/editCar/:id" element={<UpdateCar />} />
         </Routes>

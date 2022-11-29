@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,13 +13,13 @@ const UpdateCar = () => {
   const [brand, setBrand] = useState('');
   const [dailyrate, setDailyrate] = useState('');
   const [valid, setValid] = useState(false);
-  const { carId } = useParams();
 
+  const carId = useParams();
   const dispatch = useDispatch();
 
   const carDetails = useSelector((state) => state.carList);
   const { cars } = carDetails;
-  console.log(cars.id);
+  console.log(carId);
 
   const Navigate = useNavigate();
   const handleUploadImage = (e) => {
@@ -38,23 +39,25 @@ const UpdateCar = () => {
     }
   }, [name, image, type, description, brand, dailyrate]);
 
-  const handleSubmit = (e) => {
+  const handleUpdate = (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append('name', name);
-    formData.append('image', image);
-    formData.append('car_type', type);
-    formData.append('description', description);
-    formData.append('brand', brand);
-    formData.append('daily_rate', dailyrate);
+    const car = {
+      name,
+      image,
+      type,
+      description,
+      brand,
+      dailyrate,
+    };
+    console.log(car);
     if (valid) {
-      dispatch(updateCar(formData), carId);
+      dispatch(updateCar(carId, car));
       Navigate('/cars');
     }
   };
   return (
     <>
-      <form onSubmit={handleSubmit} className="w-full max-w-lg">
+      <form onSubmit={handleUpdate} className="w-full max-w-lg">
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full px-3">
             <label
