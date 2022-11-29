@@ -38,4 +38,26 @@ const deleteCar = (id) => async (dispatch) => {
   }
 };
 
-export { getCars, deleteCar };
+const addCar = (car) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        accept: 'application/json',
+      },
+    };
+    const { data } = await axios.post(
+      'http://localhost:5000/products',
+      car,
+      config
+    );
+    dispatch({
+      type: types.ADD_CAR,
+      payload: data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { getCars, deleteCar, addCar };
