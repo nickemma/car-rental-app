@@ -34,11 +34,11 @@ const AddCarScreen = ({ currentItems }) => {
   return (
     <div className="flex flex-col justify-center items-center m-auto">
       {/* add car list as card including picture without description */}
-      <div className="flex flex-wrap gap-11 max-w-[1000px] lg:max-w-[1400px] mx-auto relative">
+      <div className="flex flex-wrap gap-11 w-full xl:max-w-[1400px] mx-auto relative">
         {currentItems?.map((car, index) => (
           <div key={car.id}>
             <div
-              className="max-h-[400px] lg:max-h-[600px] lg:max-w-[400px] max-w-[300px] mx-auto
+              className="max-h-[300px] xl:max-h-[600px] xl:max-w-[400px] max-w-[280px] mx-auto
             flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow
             "
             >

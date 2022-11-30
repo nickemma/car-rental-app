@@ -9,7 +9,7 @@ const getCars = () => async (dispatch) => {
         accept: 'application/json',
       },
     };
-    const { data } = await axios.get('http://localhost:5000/products', config);
+    const { data } = await axios.get('http://localhost:3000/cars', config);
     dispatch({
       type: types.GET_CARS,
       payload: data,
@@ -38,19 +38,40 @@ const deleteCar = (id) => async (dispatch) => {
   }
 };
 
-const addCar = (car) => async (dispatch) => {
+const addCar = (car) => async (dispatch, getState) => {
   try {
-    const config = {
+    const {
+      userLogin: { userInfo },
+    } = getState();
+    // const config = {
+    //   headers: {
+    //     'Content-Type': 'multipart/form-data',
+    //     Authorization: `Bearer ${userInfo.token}`,
+    //   },
+    // };
+
+    // const bodyParameters = {
+    //   key: 'value',
+    // };
+    console.log(userInfo.token);
+    // const { data } = await axios({
+    //   method: 'post',
+    //   url: 'http://localhost:3000/cars',
+    //   data: formData,
+    //   bodyParameters,
+    //   config,
+    // });
+    // send data using fetch
+    const response = await fetch('http://localhost:3000/cars', {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        accept: 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
       },
-    };
-    const { data } = await axios.post(
-      'http://localhost:5000/products',
-      car,
-      config,
-    );
+      body: car,
+    });
+    const data = await response.json();
+    console.log(data);
     dispatch({
       type: types.ADD_CAR,
       payload: data,
@@ -60,17 +81,21 @@ const addCar = (car) => async (dispatch) => {
   }
 };
 
-const updateCar = (carId, car) => async (dispatch) => {
+const updateCar = (carId, car) => async (dispatch, getState) => {
   try {
     console.log(carId.id);
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
     const config = {
       headers: {
         'Content-Type': 'application/json',
-        accept: 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
       },
     };
     const { data } = await axios.put(
-      `http://localhost:5000/products/${carId.id}`,
+      `http://localhost:3000/products/${carId.id}`,
       car,
       config,
     );

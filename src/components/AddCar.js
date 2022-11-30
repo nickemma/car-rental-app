@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -6,7 +7,7 @@ import { addCar } from '../redux/actions/CarAction';
 
 const AddCar = () => {
   const [name, setName] = useState('');
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState([]);
   const [type, setType] = useState('');
   const [description, setDescription] = useState('');
   const [brand, setBrand] = useState('');
@@ -16,16 +17,6 @@ const AddCar = () => {
   const dispatch = useDispatch();
 
   const Navigate = useNavigate();
-  // handleuploadimage
-  const handleUploadImage = (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setImage(reader.result);
-    };
-    reader.readAsDataURL(file);
-  };
-
   useEffect(() => {
     if (name && image && type && description && brand && dailyrate) {
       setValid(true);
@@ -34,21 +25,37 @@ const AddCar = () => {
     }
   }, [name, image, type, description, brand, dailyrate]);
 
+  // handle upload multiple images
+  const handleUploadImage = (e) => {
+    const { files } = e.target;
+    const fileArray = Array.from(files).map((file) => URL.createObjectURL(file));
+    setImage(fileArray);
+    Array.from(files).map((file) => URL.revokeObjectURL(file));
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
+    const car = JSON.stringify({
+      car: {
+        name,
+        description,
+        brand,
+        daily_rate: dailyrate,
+        car_type: type,
+      },
+    });
     const formData = new FormData();
-    formData.append('name', name);
-    formData.append('image', image);
-    formData.append('car_type', type);
-    formData.append('description', description);
-    formData.append('brand', brand);
-    formData.append('daily_rate', dailyrate);
-    if (valid) {
-      dispatch(addCar(formData));
-      Navigate('/cars');
+    formData.append('car', car);
+    for (let i = 0; i < image.length; i += 1) {
+      formData.append('images', image[i]);
     }
+    dispatch(addCar(formData));
+    Navigate('/cars');
+    // if (valid) {
+    console.log(car);
+
+    //   Navigate('/cars');
+    // }
   };
-  console.log('Addcar');
   return (
     <>
       {/* add from using tailwindcss */}
@@ -85,6 +92,7 @@ const AddCar = () => {
               type="file"
               placeholder="Image"
               onChange={handleUploadImage}
+              multiple
             />
           </div>
         </div>
