@@ -27,7 +27,6 @@ const AddCarScreen = ({ currentItems }) => {
     dispatch(deleteCar(id));
   };
 
-  // const truncate = (str, n) => (str?.length > n ? `${str.substr(0, n - 1)}...` : str);
   useEffect(() => {
     dispatch(getCars());
   }, []);
@@ -35,7 +34,7 @@ const AddCarScreen = ({ currentItems }) => {
     <div className="flex flex-col justify-center items-center m-auto">
       {/* add car list as card including picture without description */}
       <div className="flex flex-wrap gap-11 w-full xl:max-w-[1400px] mx-auto relative">
-        {currentItems?.map((car, index) => (
+        {currentItems?.map((car) => (
           <div key={car.id}>
             <div
               className="max-h-[300px] xl:max-h-[600px] xl:max-w-[400px] max-w-[280px] mx-auto
@@ -87,9 +86,7 @@ const AddCarScreen = ({ currentItems }) => {
             to="/addCar"
             className="flex flex-wrap no-underline hover:no-underline"
           >
-            <AiOutlinePlusCircle
-              className="text-6xl text-purple-600 mx-auto my-10"
-            />
+            <AiOutlinePlusCircle className="text-6xl text-purple-600 mx-auto my-10" />
           </NavLink>
         </div>
       </div>

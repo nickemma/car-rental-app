@@ -27,7 +27,7 @@ const deleteCar = (id) => async (dispatch) => {
         accept: 'application/json',
       },
     };
-    await axios.delete(`http://localhost:5000/products/${id}`, config);
+    await axios.delete(`http://localhost:3000/cars/${id}`, config);
 
     dispatch({
       type: types.DELETE_CAR,
@@ -43,6 +43,7 @@ const addCar = (car) => async (dispatch, getState) => {
     const {
       userLogin: { userInfo },
     } = getState();
+
     // const config = {
     //   headers: {
     //     'Content-Type': 'multipart/form-data',
@@ -95,9 +96,9 @@ const updateCar = (carId, car) => async (dispatch, getState) => {
       },
     };
     const { data } = await axios.put(
-      `http://localhost:3000/products/${carId.id}`,
+      `http://localhost:3000/cars/${carId.id}`,
       car,
-      config,
+      config
     );
     dispatch({
       type: types.UPDATE_CAR,
@@ -108,6 +109,4 @@ const updateCar = (carId, car) => async (dispatch, getState) => {
   }
 };
 
-export {
-  getCars, deleteCar, addCar, updateCar,
-};
+export { getCars, deleteCar, addCar, updateCar };

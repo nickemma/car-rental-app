@@ -28,7 +28,9 @@ const AddCar = () => {
   // handle upload multiple images
   const handleUploadImage = (e) => {
     const { files } = e.target;
-    const fileArray = Array.from(files).map((file) => URL.createObjectURL(file));
+    const fileArray = Array.from(files).map((file) =>
+      URL.createObjectURL(file)
+    );
     setImage(fileArray);
     Array.from(files).map((file) => URL.revokeObjectURL(file));
   };
@@ -50,11 +52,6 @@ const AddCar = () => {
     }
     dispatch(addCar(formData));
     Navigate('/cars');
-    // if (valid) {
-    console.log(car);
-
-    //   Navigate('/cars');
-    // }
   };
   return (
     <>
@@ -92,7 +89,7 @@ const AddCar = () => {
               type="file"
               placeholder="Image"
               onChange={handleUploadImage}
-              multiple
+              multiple={true}
             />
           </div>
         </div>
