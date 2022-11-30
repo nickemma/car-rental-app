@@ -3,16 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/lab": "^5.0.0-alpha.109",
+    "@mui/material": "^5.10.15",
     "@reduxjs/toolkit": "^1.9.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.0",
+    "bootstrap": "^5.2.2",
+    "date-fns": "^2.29.3",
+    "framer-motion": "^7.6.15",
+    "json-server": "^0.17.1",
     "prop-types": "^15.8.1",
     "prototype": "^0.0.5",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.6.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.6.0",
+    "react-paginate": "^8.1.4",
     "react-redux": "^8.0.5",
     "react-responsive-datepicker": "^1.0.6",
     "react-router-dom": "^6.4.3",
@@ -21,6 +31,7 @@
     "react-toastify": "^9.1.1",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.2",
+    "swiper": "^8.4.5",
     "swiper.js": "^1.0.0",
     "uuid": "^9.0.0",
     "web-vitals": "^2.1.4"
@@ -29,7 +40,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "json-server --watch db.json --port 5000"
   },
   "eslintConfig": {
     "extends": [

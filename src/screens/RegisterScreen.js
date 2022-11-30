@@ -12,6 +12,7 @@ import InlineError from '../components/InlineError';
 import { register } from '../redux/actions/UserAction';
 import {
   validateAge,
+  validateComfirmePassword,
   validateEmail,
   validateFullName,
   validatePassword,
@@ -20,10 +21,12 @@ import {
 const RegisterScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [cpassword, setCpassword] = useState('');
   const [fullName, setFullName] = useState('');
   const [age, setAge] = useState(new Date());
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [cpasswordError, setCPasswordError] = useState('');
   const [fullNameError, setFullNameError] = useState('');
   const [ageError, setAgeError] = useState('');
   const [submited, setSubmited] = useState(false);
@@ -71,14 +74,17 @@ const RegisterScreen = () => {
     validateFullName({ fullName, setFullNameError });
     validatePassword({ password, setPasswordError });
     validateAge({ age, setAgeError });
+    validateComfirmePassword({ password, cpassword, setCPasswordError})
 
     if (
       emailError ||
       passwordError ||
       fullNameError ||
       ageError ||
+      cpasswordError ||
       !email ||
       !password ||
+      !cpassword ||
       !fullName ||
       !age
     ) {
@@ -101,8 +107,13 @@ const RegisterScreen = () => {
     password,
     fullName,
     age,
+    cpasswordError,
+    cpassword,
   ]);
 
+  const handleSubmitt = (e) => {
+    e.preventDefault();
+  }
   return (
     <div>
       <ToastContainer />
@@ -110,7 +121,7 @@ const RegisterScreen = () => {
       {loading && <Loader />}
       <form
         className="register shadow-md rounded px-8 pt-6 pb-4 mb-4 w-full max-w-sm mx-auto"
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmitt}
       >
         <div className="mb-4">
           <label
@@ -211,14 +222,33 @@ const RegisterScreen = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <p className="text-red-500 text-xs italic">
-            Please choose a password.
-          </p>
+          {submited && passwordError && <InlineError error={passwordError} />}
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="password"
+          >
+            Confirm Password
+          </label>
+          <input
+            className={`shadow appearance-none border rounded 
+            w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline
+            ${submited && !cpassword ? 'border-red-500 border-2' : ''}
+            `}
+            id="password"
+            type="password"
+            placeholder="******************"
+            value={cpassword}
+            onChange={(e) => setCpassword(e.target.value)}
+          />
+        {submited && cpasswordError && <InlineError error={cpasswordError} />}
         </div>
         <div className="flex items-center justify-center">
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
+            onClick={handleSubmit}
           >
             Sign up
           </button>
