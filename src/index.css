@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .login {
   min-width: 400px;
 }
@@ -11,7 +10,6 @@
   min-width: 400px;
 }
 
-/* add paginiation css */
 .pagination {
   display: flex;
   justify-content: center;
@@ -19,13 +17,11 @@
   margin-top: 20px;
 }
 
-/* add pagination css */
 .pagination li {
   list-style: none;
   margin: 0 5px;
 }
 
-/* add pagination css */
 .pagination li a {
   text-decoration: none;
   color: #000;
@@ -34,62 +30,43 @@
   border-radius: 5px;
 }
 
-/* add pagination css */
 .pagination li a:hover {
   background-color: #000;
   color: #fff;
 }
 
-/* add pagination css */
 .pagination li.active a {
   background-color: #000;
   color: #fff;
 }
 
-/* add pagination css */
 .pagination li.disabled a {
   background-color: #ccc;
   color: #fff;
 }
 
-/* add pagination css */
-.pagination li.disabled a:hover {
-  background-color: #ccc;
-  color: #fff;
+.pagination li a:focus {
+  outline: none;
 }
 
-/* add pagination css */
+.pagination li a:link {
+  outline: none;
+}
+
+.pagination li a:active {
+  outline: none;
+}
+
+.pagination li a:visited {
+  outline: none;
+}
+
 .pagination li.active a:hover {
   background-color: #000;
   color: #fff;
 }
 
-/* add pagination css */
-.pagination li a:focus {
-  outline: none;
-}
-
-/* add pagination css */
-.pagination li a:active {
-  outline: none;
-}
-
-/* add pagination css */
-.pagination li a:visited {
-  outline: none;
-}
-
-/* add pagination css */
-.pagination li a:link {
-  outline: none;
-}
-
-/* add pagination css */
-.pagination li a:active {
-  outline: none;
-}
-
-/* add pagination css */
-.pagination li a:visited {
-  outline: none;
+.pagination li.disabled a:hover {
+  background-color: #ccc;
+  color: #fff;
 }
