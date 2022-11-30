@@ -26,36 +26,36 @@ const DetailsCarScreen = () => {
       {loading && <Loader />}
       {cars && (
         <div className="flex flex-col md:flex-row lg:flex-row grow h-full lg:pt-20 lg:pb-10">
-          <div className="grow lg:w-2/5 flex items-center justify-center px-10 rounded-full aspect-square">
+          <div className="grow lg:w-2/5 md:w-5/6 flex items-center justify-center px-10 rounded-full aspect-square">
             <img
               src={cars?.image.url}
               alt={cars?.name}
-              className="object-cover block rounded-full aspect-square w-100"
+              className="object-cover block rounded-full aspect-square w-[100%] ml-[40%]"
             />
           </div>
-          <div className="flex flex-col w-full lg:w-72 lg:mr-20 py-10 px-10 lg:px-0">
-            <h1 className="text-center lg:text-right text-3xl font-semibold text-slate-800">
+          <div className="flex flex-col w-full lg:w-72 md:mr-10 py-10 px-10 lg:px-0">
+            <h1 className="text-center md:text-right text-3xl font-semibold text-slate-800">
               {cars?.name}
             </h1>
-            <p className="mb-10 text-center lg:text-right text-gray-500 text-sm ">
+            <p className="describe mb-10 text-center md:text-right text-gray-500 text-sm">
               {cars?.description}
             </p>
-            <div className="flex flex-col grow">
-              <div className="grow flex flex-col rounded-2xl overflow-hidden border">
+            <div className="flex flex-col grow items-end">
+              <div className="grow flex flex-col rounded-2xl overflow-hidden border w-[60%]">
                 <div className="flex justify-center items-center gap-4 border-b">
                   <h3 className="font-bold my-4">Other Details</h3>
                 </div>
-                <ul className="grow-0">
+                <ul className="grow-0 p-4">
                   <li className="odd:bg-gray-200 bg-gray-100 py-2 px-4">
                     <div className="flex items-center justify-center">
-                      <span>Brand</span>
-                      <span className="float-right">{cars?.brand}</span>
+                      <span className="pr-10">Brand</span>
+                      <span className="text-right">{cars?.brand}</span>
                     </div>
                   </li>
                   <li className="odd:bg-gray-200 bg-gray-100 py-2 px-4">
                     <div className="flex items-center justify-center">
-                      <span>Daily Type</span>
-                      <span className="float-right">{cars?.daily_rate}</span>
+                      <span className="pr-10">Daily Type</span>
+                      <span className="text-right">${cars?.daily_rate}</span>
                     </div>
                   </li>
                 </ul>

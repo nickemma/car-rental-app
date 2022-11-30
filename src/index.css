@@ -96,3 +96,8 @@
 .swiper-slide-shadow-right {
   display: none;
 }
+
+.describe {
+  width: 60%;
+  margin: 1rem 0 1rem auto;
+}
