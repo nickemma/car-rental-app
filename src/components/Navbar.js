@@ -81,7 +81,7 @@ const Navbar = () => {
                   <span
                     className={`${
                       !open && "hidden"
-                    } origin-left duration-200 text-base font-extrabold text-center text-slate-800`}
+                    } origin-left duration-200 text-base font-semibold text-center text-slate-800`}
                   >
                     {item.name}
                   </span>
@@ -94,7 +94,9 @@ const Navbar = () => {
               {admin ? (
                 <ul className="pt-6">
                   <li
-                    className="ml-3 font-bold "
+                    className={`${
+                          !open && "hidden"
+                        } origin-left duration-200 text-base font-bold text-center text-slate-800`}
                   >Admin</li>
                   {NavItemsAdmin.map((item) => (
                     <NavLink
@@ -110,7 +112,7 @@ const Navbar = () => {
                       <span
                         className={`${
                           !open && "hidden"
-                        } origin-left duration-200 text-base font-extrabold text-center text-slate-800`}
+                        } origin-left duration-200 text-base font-semibold text-center text-slate-800`}
                       >
                         {item.name}
                       </span>
@@ -137,7 +139,7 @@ const Navbar = () => {
                     <span
                       className={`${
                         !open && "hidden"
-                      } origin-left duration-200 text-base font-extrabold text-center text-slate-800`}
+                      } origin-left duration-200 text-base font-semibold text-center text-slate-800`}
                     >
                       {item.name}
                     </span>
@@ -157,7 +159,7 @@ const Navbar = () => {
                   <span
                     className={`${
                       !open && "hidden"
-                    } origin-left duration-200 text-base font-extrabold text-center text-slate-800`}
+                    } origin-left duration-200 text-base font-semibold text-center text-slate-800`}
                   >
                     Logout
                   </span>
