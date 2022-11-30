@@ -20,8 +20,6 @@ SwiperCore.use([Virtual, Navigation, Pagination]);
 const AddCarScreen = ({ currentItems }) => {
   const dispatch = useDispatch();
 
-  const { cars } = useSelector((state) => state.carList);
-
   const navigate = useNavigate();
   const handleDelete = (id) => {
     dispatch(deleteCar(id));
@@ -47,7 +45,7 @@ const AddCarScreen = ({ currentItems }) => {
               >
                 <div className="max-h-[150px] lg:max-h-[240px]">
                   <img
-                    src={car.image}
+                    src={car.image?.url}
                     alt=""
                     className="lg:h-[100%] max-h-[100%]  w-full rounded-t pb-1  object-cover"
                   />

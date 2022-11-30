@@ -19,60 +19,48 @@ const getCars = () => async (dispatch) => {
   }
 };
 
-const deleteCar = (id) => async (dispatch) => {
+const deleteCar = (id) => async (dispatch, getState) => {
   try {
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
     const config = {
       headers: {
         'Content-Type': 'application/json',
         accept: 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    await axios.delete(`http://localhost:3000/cars/${id}`, config);
-
+    const { data } = await axios.delete(
+      `http://localhost:3000/cars/${id}`,
+      config,
+    );
     dispatch({
       type: types.DELETE_CAR,
-      payload: id,
+      payload: data,
     });
   } catch (error) {
     console.log(error);
   }
 };
 
-const addCar = (car) => async (dispatch, getState) => {
+const addCar = (FormData) => async (dispatch, getState) => {
   try {
     const {
       userLogin: { userInfo },
     } = getState();
 
-    // const config = {
-    //   headers: {
-    //     'Content-Type': 'multipart/form-data',
-    //     Authorization: `Bearer ${userInfo.token}`,
-    //   },
-    // };
-
-    // const bodyParameters = {
-    //   key: 'value',
-    // };
     console.log(userInfo.token);
-    // const { data } = await axios({
-    //   method: 'post',
-    //   url: 'http://localhost:3000/cars',
-    //   data: formData,
-    //   bodyParameters,
-    //   config,
-    // });
-    // send data using fetch
-    const response = await fetch('http://localhost:3000/cars', {
-      method: 'POST',
+    // post the data using fetch
+    const { data } = await axios({
+      method: 'post',
+      url: 'http://localhost:3000/cars',
+      data: FormData,
       headers: {
-        'Content-Type': 'application/json',
         Authorization: `Bearer ${userInfo.token}`,
       },
-      body: car,
     });
-    const data = await response.json();
-    console.log(data);
     dispatch({
       type: types.ADD_CAR,
       payload: data,
@@ -82,24 +70,26 @@ const addCar = (car) => async (dispatch, getState) => {
   }
 };
 
-const updateCar = (carId, car) => async (dispatch, getState) => {
+const updateCar = (carId, formData) => async (dispatch, getState) => {
   try {
     console.log(carId.id);
 
     const {
       userLogin: { userInfo },
     } = getState();
-    const config = {
+
+    const { data } = await axios({
+      method: 'put',
+      url: `http://localhost:3000/cars/${carId.id}`,
+      data: formData,
       headers: {
-        'Content-Type': 'application/json',
         Authorization: `Bearer ${userInfo.token}`,
       },
-    };
-    const { data } = await axios.put(
-      `http://localhost:3000/cars/${carId.id}`,
-      car,
-      config
-    );
+      body: {
+        id: carId.id,
+      },
+    });
+
     dispatch({
       type: types.UPDATE_CAR,
       payload: data,
@@ -109,4 +99,6 @@ const updateCar = (carId, car) => async (dispatch, getState) => {
   }
 };
 
-export { getCars, deleteCar, addCar, updateCar };
+export {
+  getCars, deleteCar, addCar, updateCar,
+};

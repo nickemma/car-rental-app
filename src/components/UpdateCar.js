@@ -6,29 +6,26 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { updateCar } from '../redux/actions/CarAction';
 
 const UpdateCar = () => {
-  const [name, setName] = useState('');
-  const [image, setImage] = useState('');
-  const [type, setType] = useState('');
-  const [description, setDescription] = useState('');
-  const [brand, setBrand] = useState('');
-  const [dailyrate, setDailyrate] = useState('');
+  const carDetails = useSelector((state) => state.carList);
+  const carId = useParams();
+  const { cars } = carDetails;
+  const car = cars.find((c) => c.id === parseInt(carId.id, 10));
+  const [name, setName] = useState(car?.name);
+  const [image, setImage] = useState(null);
+  const [type, setType] = useState(car?.car_type);
+  const [description, setDescription] = useState(car?.description);
+  const [brand, setBrand] = useState(car?.brand);
+  const [dailyrate, setDailyrate] = useState(car?.daily_rate);
   const [valid, setValid] = useState(false);
 
-  const carId = useParams();
   const dispatch = useDispatch();
 
-  const carDetails = useSelector((state) => state.carList);
-  const { cars } = carDetails;
-  console.log(carId);
+  console.log(cars);
+  console.log(carId.id);
 
   const Navigate = useNavigate();
   const handleUploadImage = (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setImage(reader.result);
-    };
-    reader.readAsDataURL(file);
+    setImage(e.target.files[0]);
   };
 
   useEffect(() => {
@@ -41,19 +38,16 @@ const UpdateCar = () => {
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    const car = {
-      name,
-      image,
-      type,
-      description,
-      brand,
-      dailyrate,
-    };
-    console.log(car);
-    if (valid) {
-      dispatch(updateCar(carId, car));
-      Navigate('/cars');
-    }
+    const formData = new FormData();
+    formData.append('car[name]', name);
+    formData.append('car[image]', image);
+    formData.append('car[car_type]', type);
+    formData.append('car[description]', description);
+    formData.append('car[brand]', brand);
+    formData.append('car[daily_rate]', dailyrate);
+
+    dispatch(updateCar(carId, formData));
+    Navigate('/cars');
   };
   return (
     <>
@@ -170,6 +164,7 @@ const UpdateCar = () => {
             <button
               className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
               type="submit"
+              disabled={!valid}
             >
               Edit Car
             </button>

@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
@@ -25,33 +26,23 @@ const AddCar = () => {
     }
   }, [name, image, type, description, brand, dailyrate]);
 
-  // handle upload multiple images
-  const handleUploadImage = (e) => {
-    const { files } = e.target;
-    const fileArray = Array.from(files).map((file) =>
-      URL.createObjectURL(file)
-    );
-    setImage(fileArray);
-    Array.from(files).map((file) => URL.revokeObjectURL(file));
-  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const car = JSON.stringify({
-      car: {
-        name,
-        description,
-        brand,
-        daily_rate: dailyrate,
-        car_type: type,
-      },
-    });
     const formData = new FormData();
-    formData.append('car', car);
-    for (let i = 0; i < image.length; i += 1) {
-      formData.append('images', image[i]);
-    }
+    formData.append('car[name]', name);
+    formData.append('car[image]', image);
+    formData.append('car[car_type]', type);
+    formData.append('car[description]', description);
+    formData.append('car[brand]', brand);
+    formData.append('car[daily_rate]', dailyrate);
+
     dispatch(addCar(formData));
     Navigate('/cars');
+  };
+
+  // handle image upload
+  const handleUploadImage = (e) => {
+    setImage(e.target.files[0]);
   };
   return (
     <>
@@ -89,7 +80,7 @@ const AddCar = () => {
               type="file"
               placeholder="Image"
               onChange={handleUploadImage}
-              multiple={true}
+              multiple
             />
           </div>
         </div>
