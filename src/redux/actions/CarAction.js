@@ -3,6 +3,7 @@ import * as types from '../constants/carConstants';
 
 const getCars = () => async (dispatch) => {
   try {
+    dispatch({ type: types.GET_CARS_REQUEST });
     const config = {
       headers: {
         'Content-Type': 'application/json',
@@ -11,11 +12,17 @@ const getCars = () => async (dispatch) => {
     };
     const { data } = await axios.get('http://localhost:3000/cars', config);
     dispatch({
-      type: types.GET_CARS,
+      type: types.GET_CARS_SUCCESS,
       payload: data,
     });
   } catch (error) {
-    console.log(error);
+    dispatch({
+      type: types.GET_CARS_FAIL,
+      payload:
+        error.response && error.response.data.error
+          ? error.response.data.error
+          : error.error,
+    });
   }
 };
 

@@ -6,6 +6,7 @@ import RegisterScreen from './screens/RegisterScreen';
 import AddCar from './components/AddCar';
 import UpdateCar from './components/UpdateCar';
 import CarsScreen from './screens/CarsScreen';
+import DetailsCarScreen from './screens/DetailsCarScreen';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/cars" element={<CarsScreen />} />
           <Route path="/addCar" element={<AddCar />} />
           <Route path="/editCar/:id" element={<UpdateCar />} />
+          <Route path="/car/:id" element={<DetailsCarScreen />} />
         </Routes>
       </div>
     </div>

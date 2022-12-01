@@ -70,3 +70,34 @@
   background-color: #ccc;
   color: #fff;
 }
+
+.swiper {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 300px;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+}
+
+.swiper-slide-shadow-left {
+  display: none;
+}
+
+.swiper-slide-shadow-right {
+  display: none;
+}
+
+.describe {
+  width: 60%;
+  margin: 1rem 0 1rem auto;
+}

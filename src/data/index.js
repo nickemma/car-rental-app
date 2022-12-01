@@ -10,6 +10,7 @@ import {
 } from 'react-icons/ai';
 import { FaUsers } from 'react-icons/fa';
 import { BiLogInCircle } from 'react-icons/bi';
+import { MdOutlineLibraryAdd } from 'react-icons/md';
 
 export const navbarItems = [
   {
@@ -65,7 +66,7 @@ export const NavItemsAdmin = [
   {
     name: 'Add Cars',
     path: '/cars',
-    icon: <AiFillCar />,
+    icon: <MdOutlineLibraryAdd />,
   },
   {
     name: 'Users',
