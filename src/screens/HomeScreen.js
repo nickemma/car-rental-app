@@ -17,24 +17,19 @@ import { EffectCoverflow, Pagination } from 'swiper';
 const HomeScreen = () => {
   const swiperRef = useRef(null);
 
-  const dispatch = useDispatch();
   const handlePrev = () => {
-    swiperRef.current.swiper.slidePrev();
-  };
-  const handleNext = () => {
     swiperRef.current.swiper.slideNext();
   };
+  const handleNext = () => {
+    swiperRef.current.swiper.slidePrev();
+  };
 
-  const cars = useSelector((state) => state.getCars);
-  const { loading, car } = cars;
-  console.log(car);
+  const carList = useSelector((state) => state.carList);
+  const { loading, cars } = carList;
 
   const truncate = (str, n) => {
     return str?.length > n ? str.substr(0, n - 1) + '...' : str;
   };
-  useEffect(() => {
-    dispatch(getCars());
-  }, []);
   return (
     <>
       {loading && <Loader />}
@@ -59,7 +54,7 @@ const HomeScreen = () => {
             "
         />
       </div>
-      {car && (
+      {cars && (
         <Swiper
           effect={'coverflow'}
           grabCursor={true}
@@ -77,7 +72,7 @@ const HomeScreen = () => {
           className="mySwiper max-w-[400px] md:max-w-[1000px] lg:max-w-full overflow-hidden relative"
           ref={swiperRef}
         >
-          {car.map((car) => (
+          {cars.map((car) => (
             <SwiperSlide key={car.id} className="max-w-[300px]   mr-[70px]">
               <NavLink className="car" to={`/car/${car.id}`}>
                 <img
@@ -96,18 +91,7 @@ const HomeScreen = () => {
                             </NavLink>
                         </SwiperSlide>
                     ))}
-                            <div className="absolute text-[2.5rem]
-
-                                    "
-                  >
-                    {car.name}
-                  </h3>
-                  <p className="card-text">{truncate(car.description, 100)}</p>
-                </div>
-              </NavLink>
-              {/* Add prev and next button */}
-            </SwiperSlide>
-          ))}
+                          
           <div
             className="absolute text-[1.8rem]
                             top-1/3 left-0 z-10 bg-[#98bd2a] text-white

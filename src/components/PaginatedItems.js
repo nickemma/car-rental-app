@@ -7,23 +7,29 @@ import AddCarScreen from "../screens/AddCarScreen";
 import Loader from "./Loader";
 
 function PaginatedItems({ itemsPerPage }) {
+  const user = useSelector((state) => state.userLogin);
+  const { userInfo } = user;
+  const admin = userInfo?.admin;
+  if(!admin) {
+    return <h1>NOt found</h1>;
+  }
     // Here we use item offsets; we could also use page offsets
     // following the API or data you're working with.
     const [itemOffset, setItemOffset] = useState(0);
 
-    const cars  = useSelector((state) => state.getCars);
-    const { loading, car } = cars;
+    const carList  = useSelector((state) => state.carList);
+    const { loading, cars } = carList;
     // Simulate fetching items from another resources.
     // (This could be items from props; or items loaded in a local state
     // from an API endpoint with useEffect and useState)
     const endOffset = itemOffset + itemsPerPage;
     console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-    const currentItems = car?.slice(itemOffset, endOffset);
-    const pageCount = Math.ceil(car?.length / itemsPerPage);
+    const currentItems = cars?.slice(itemOffset, endOffset);
+    const pageCount = Math.ceil(cars?.length / itemsPerPage);
   
     // Invoke when user click to request another page.
     const handlePageClick = (event) => {
-      const newOffset = (event.selected * itemsPerPage) % car?.length;
+      const newOffset = (event.selected * itemsPerPage) % cars?.length;
       console.log(
         `User requested page number ${event.selected}, which is offset ${newOffset}`
       );

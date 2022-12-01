@@ -1,26 +1,19 @@
+/* eslint-disable import/prefer-default-export */
 import * as types from '../constants/carConstants';
 
 const initialState = {
   loading: false,
   cars: [],
-  car: {},
-};
-
-const getCarReducer = (state = {}, action) => {
-  switch (action.type) {
-    case types.GET_CARS_REQUEST:
-      return { loading: true };
-    case types.GET_CARS_SUCCESS:
-      return { loading: false, car: action.payload };
-    case types.GET_CARS_FAIL:
-      return { loading: false, error: action.payload };
-    default:
-      return state;
-  }
 };
 
 const carReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.GET_CARS_REQUEST:
+      return { ...state, loading: true };
+    case types.GET_CARS_SUCCESS:
+      return { ...state, loading: false, cars: action.payload };
+    case types.GET_CARS_FAIL:
+      return { ...state, loading: false, error: action.payload };
     case types.DELETE_CAR:
       return {
         ...state,
@@ -46,5 +39,4 @@ const carReducer = (state = initialState, action) => {
 
 export {
   carReducer,
-  getCarReducer,
 };
