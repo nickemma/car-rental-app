@@ -1,14 +1,19 @@
 /* eslint-disable */
-import { useState } from "react";
-import { CgLogOut } from "react-icons/cg";
-import { NavLink, useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import logo from "../assets/logo.gif";
-import { auth, navbarItems, NavItemsAdmin, socialIcons } from "../data";
-import { logout } from "../redux/actions/UserAction";
-import { FiChevronsLeft } from "react-icons/fi";
+import { useState } from 'react';
+import { CgLogOut } from 'react-icons/cg';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import logo from '../assets/logo.gif';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { auth, navbarItems, NavItemsAdmin, socialIcons } from '../data';
+import { logout } from '../redux/actions/UserAction';
+import { FiChevronsLeft } from 'react-icons/fi';
 
 const Navbar = () => {
+  const notify = () => {
+    toast.success('Logout successful');
+  };
   const [open, setOpen] = useState(true);
   const user = useSelector((state) => state.userLogin);
   const { userInfo } = user;
@@ -18,19 +23,20 @@ const Navbar = () => {
 
   const onLogoutHandler = () => {
     dispatch(logout());
-    navigate("/");
+    notify();
+    navigate('/');
   };
   return (
     <>
       <div className="flex max-h-[95vh]">
         <div
           className={`${
-            open ? "w-52" : "w-[3.2rem]"
+            open ? 'w-52' : 'w-[3.2rem]'
           } h-screen border-r-2 border-slate-300 bg-white relative duration-300 `}
         >
           <FiChevronsLeft
             className={`absolute cursor-pointer -right-8 top-9 w-9 font-medium text-2xl ${
-              !open && "rotate-180"
+              !open && 'rotate-180'
             }`}
             onClick={() => setOpen(!open)}
           />
@@ -46,7 +52,7 @@ const Navbar = () => {
               {/* call avatar */}
               <div
                 className={`flex items-center justify-center  rounded-full bg-white ml-1
-              ${open ? "w-[55px] h-[55px]" : "w-[40px] h-[40px]"}
+              ${open ? 'w-[55px] h-[55px]' : 'w-[40px] h-[40px]'}
               `}
               >
                 <img
@@ -57,7 +63,7 @@ const Navbar = () => {
               </div>
               <p
                 className={`${
-                  !open && "hidden"
+                  !open && 'hidden'
                 } origin-left duration-200 text-sm mx-3 font-medium`}
               >
                 {userInfo?.name}
@@ -71,7 +77,7 @@ const Navbar = () => {
                 <NavLink
                   key={item.name}
                   className={`text-white text-sm flex items-center duration-500 gap-x-4 cursor-pointer p-2 hover:bg-gray-400 rounded-bl-lg ${
-                    item.gap ? "mt-9" : "mt-2"
+                    item.gap ? 'mt-9' : 'mt-2'
                   }`}
                   to={item.path}
                 >
@@ -80,7 +86,7 @@ const Navbar = () => {
                   </span>
                   <span
                     className={`${
-                      !open && "hidden"
+                      !open && 'hidden'
                     } origin-left duration-200 text-base font-semibold text-center text-slate-800`}
                   >
                     {item.name}
@@ -95,14 +101,16 @@ const Navbar = () => {
                 <ul className="pt-6">
                   <li
                     className={`${
-                          !open && "hidden"
-                        } origin-left duration-200 text-base font-bold text-center text-slate-800`}
-                  >Admin</li>
+                      !open && 'hidden'
+                    } origin-left duration-200 text-base font-bold text-center text-slate-800`}
+                  >
+                    Admin
+                  </li>
                   {NavItemsAdmin.map((item) => (
                     <NavLink
                       key={item.name}
                       className={`text-white text-sm flex items-center duration-500 gap-x-4 cursor-pointer p-2 hover:bg-gray-400 rounded-bl-lg ${
-                        item.gap ? "mt-9" : "mt-2"
+                        item.gap ? 'mt-9' : 'mt-2'
                       }`}
                       to={item.path}
                     >
@@ -111,7 +119,7 @@ const Navbar = () => {
                       </span>
                       <span
                         className={`${
-                          !open && "hidden"
+                          !open && 'hidden'
                         } origin-left duration-200 text-base font-semibold text-center text-slate-800`}
                       >
                         {item.name}
@@ -129,7 +137,7 @@ const Navbar = () => {
                   <NavLink
                     key={item.name}
                     className={`text-white text-sm flex items-center duration-500 gap-x-4 cursor-pointer p-2 hover:bg-gray-500 rounded-bl-lg ${
-                      item.gap ? "mt-9" : "mt-2"
+                      item.gap ? 'mt-9' : 'mt-2'
                     }`}
                     to={item.path}
                   >
@@ -138,7 +146,7 @@ const Navbar = () => {
                     </span>
                     <span
                       className={`${
-                        !open && "hidden"
+                        !open && 'hidden'
                       } origin-left duration-200 text-base font-semibold text-center text-slate-800`}
                     >
                       {item.name}
@@ -158,7 +166,7 @@ const Navbar = () => {
                   </span>
                   <span
                     className={`${
-                      !open && "hidden"
+                      !open && 'hidden'
                     } origin-left duration-200 text-base font-semibold text-center text-slate-800`}
                   >
                     Logout
@@ -169,21 +177,20 @@ const Navbar = () => {
             <div className="flex flex-col items-center">
               <ul
                 className={`pt-6 flex items-center
-              ${!open ? "flex-col" : "flex-row"}
+              ${!open ? 'flex-col' : 'flex-row'}
               `}
               >
                 {socialIcons.map((icons, index) => (
                   <li
                     key={index}
                     className={`text-white text-sm flex items-center duration-500 gap-x-4 cursor-pointer p-2 hover:bg-gray-400 rounded-bl-lg ${
-                      icons.gap ? "mt-9" : "mt-2"
+                      icons.gap ? 'mt-9' : 'mt-2'
                     }`}
                   >
-                    <span className={`text-black font-extrabold text-xl ml-1  
-                     ${
-                      !open && "hidden"
-                     }`
-                    }>
+                    <span
+                      className={`text-black font-extrabold text-xl ml-1  
+                     ${!open && 'hidden'}`}
+                    >
                       {icons.icon}
                     </span>
                   </li>
@@ -191,7 +198,7 @@ const Navbar = () => {
               </ul>
               <p
                 className={`${
-                  !open && "hidden"
+                  !open && 'hidden'
                 } origin-left duration-200 text-sm mx-3 font-medium`}
               >
                 Microverse Copyright 2022
@@ -199,6 +206,7 @@ const Navbar = () => {
             </div>
           </nav>
         </div>
+        <ToastContainer />
       </div>
     </>
   );
