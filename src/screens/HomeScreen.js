@@ -90,6 +90,14 @@ const HomeScreen = () => {
                   <h3
                     className="font-bold
                                         text-xl text-gray-900 px-6 mt-[1rem] mb-[1rem]
+                                    ">{car.name}</h3>
+                                    <p className="card-text">{truncate(car.description, 100)}</p>
+                                </div>
+                            </NavLink>
+                        </SwiperSlide>
+                    ))}
+                            <div className="absolute text-[2.5rem]
+
                                     "
                   >
                     {car.name}

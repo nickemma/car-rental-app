@@ -28,9 +28,14 @@ const Navbar = () => {
   };
   return (
     <>
-      <div className="flex max-h-[95vh]">
+      <div className="flex max-h-[95vh] z-10">
         <div
           className={`${
+            open ? "w-[15rem]" : "w-[3.2rem]"
+          } h-screen border-r-2 border-slate-300 bg-white relative duration-300 `}
+        >
+          <div
+            className="bg-white rounded-full max-w-[70px] -right-4 top-2  shadow-lg  p-5 absolute"
             open ? 'w-52' : 'w-[3.2rem]'
           } h-screen border-r-2 border-slate-300 bg-white relative duration-300 `}
         >
@@ -39,10 +44,17 @@ const Navbar = () => {
               !open && 'rotate-180'
             }`}
             onClick={() => setOpen(!open)}
-          />
+          >
+            <FiChevronsLeft
+              className={` cursor-pointer w-9 font-medium text-2xl ${
+                !open && "rotate-180"
+              }`}
+            />
+          </div>
+
           <div
             className={`${
-              open ? 'w-20' : 'w-12'
+              open ? "w-20" : "w-12"
             } cursor-pointer duration-300 my-4 mx-auto border-rounded`}
           >
             <img src={logo} alt="logo" />
@@ -101,7 +113,8 @@ const Navbar = () => {
                 <ul className="pt-6">
                   <li
                     className={`${
-                      !open && 'hidden'
+                      !open && "hidden"
+
                     } origin-left duration-200 text-base font-bold text-center text-slate-800`}
                   >
                     Admin
@@ -189,7 +202,8 @@ const Navbar = () => {
                   >
                     <span
                       className={`text-black font-extrabold text-xl ml-1  
-                     ${!open && 'hidden'}`}
+                     ${!open && "hidden"}`}
+
                     >
                       {icons.icon}
                     </span>
