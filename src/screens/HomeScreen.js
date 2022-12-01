@@ -91,7 +91,6 @@ const HomeScreen = () => {
                                     <p className="card-text">{truncate(car.description, 100)}</p>
                                 </div>
                             </NavLink>
-                            {/* Add prev and next button */}
                         </SwiperSlide>
                     ))}
                             <div className="absolute text-[2.5rem]

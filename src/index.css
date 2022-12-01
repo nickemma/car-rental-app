@@ -1,3 +1,13 @@
+* {
+  overflow: hidden;
+}
+
+@media (max-width: 800px) {
+  * {
+    overflow: auto;
+  }
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

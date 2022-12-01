@@ -30,7 +30,6 @@ const AddCarScreen = ({ currentItems }) => {
   }, []);
   return (
     <div className="flex flex-col justify-center items-center m-auto">
-      {/* add car list as card including picture without description */}
       <div className="flex flex-wrap gap-11 w-full xl:max-w-[1400px] mx-auto relative">
         {currentItems?.map((car) => (
           <div key={car.id}>

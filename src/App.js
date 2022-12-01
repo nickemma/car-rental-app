@@ -7,12 +7,13 @@ import AddCar from './components/AddCar';
 import UpdateCar from './components/UpdateCar';
 import CarsScreen from './screens/CarsScreen';
 import DetailsCarScreen from './screens/DetailsCarScreen';
+import BookingScreen from './screens/BookingScreen';
 
 function App() {
   return (
     <div className="App flex">
       <Navbar />
-      <div className="m-auto">
+      <div className="m-auto w-[100%]">
         <Routes>
           <Route path="/" element={<HomeScreen />} />
           <Route path="/login" element={<LoginScreen />} />
@@ -21,6 +22,7 @@ function App() {
           <Route path="/addCar" element={<AddCar />} />
           <Route path="/editCar/:id" element={<UpdateCar />} />
           <Route path="/car/:id" element={<DetailsCarScreen />} />
+          <Route path="/booking" element={<BookingScreen />} />
         </Routes>
       </div>
     </div>
