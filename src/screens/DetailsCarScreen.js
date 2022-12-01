@@ -58,7 +58,7 @@ const DetailsCarScreen = () => {
                   </li>
                   <li className="odd:bg-gray-200 bg-gray-100 py-2 px-4">
                     <div className="flex items-center justify-center">
-                      <span className="pr-10">Daily Type</span>
+                      <span className="pr-10">Daily Rate</span>
                       <span className="text-right">${cars?.daily_rate}</span>
                     </div>
                   </li>
