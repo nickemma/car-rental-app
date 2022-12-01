@@ -4,6 +4,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import Loader from '../components/Loader';
 import { getCars } from '../redux/actions/CarAction';
+import pic from '../assets/canva.png';
+import { AiOutlineRight } from 'react-icons/ai';
+
 import {
   BsArrowRightCircleFill,
   BsFillArrowLeftCircleFill,
@@ -61,7 +64,12 @@ const DetailsCarScreen = () => {
                   </li>
                 </ul>
               </div>
-              <div className="my-10 flex justify-center">
+              <p className="flex items-center gap-2 mt-1">
+                DISCOVER MORE MODELS{' '}
+                <AiOutlineRight className="text-yellow-500" />
+              </p>
+              <img src={pic} alt="canva" />
+              <div className="my-6 flex justify-center">
                 <button
                   type="button"
                   className="bg-lime-500 text-white hover:bg-lime-400 px-6 py-2 rounded-full font-semibold min-w-[10rem] transition-colors border-2 border-transparent"
