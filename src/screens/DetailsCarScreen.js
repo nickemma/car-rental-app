@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Loader from '../components/Loader';
 import { getCars } from '../redux/actions/CarAction';
 import {
@@ -12,6 +12,7 @@ import { SlSettings } from 'react-icons/sl';
 
 const DetailsCarScreen = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const carDetails = useSelector((state) => state.getCars);
   const { loading, car } = carDetails;
   const cars = car?.find((c) => c.id === parseInt(id, 10));
@@ -67,7 +68,7 @@ const DetailsCarScreen = () => {
                 >
                   <div className="flex items-center gap-3 justify-center">
                     <SlSettings />
-                    <span>Reserve Now</span>
+                    <span>Reserve</span>
                     <BsArrowRightCircleFill />
                   </div>
                 </button>
@@ -77,11 +78,12 @@ const DetailsCarScreen = () => {
         </div>
       )}
       <div
-        className="absolute text-[1.8rem]
-                            top-1/3 left-0 z-10 bg-[#98bd2a] text-white
+        className="fixed text-[1.8rem]
+                            bottom-14 left-52 z-10 bg-[#98bd2a] text-white
                             rounded-full p-3 cursor-pointer
                             hidden md:block
                             "
+        onClick={() => navigate(-1)}
       >
         <BsFillArrowLeftCircleFill />
       </div>
