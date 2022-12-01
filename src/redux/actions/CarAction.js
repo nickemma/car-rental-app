@@ -36,16 +36,17 @@ const deleteCar = (id) => async (dispatch, getState) => {
       headers: {
         'Content-Type': 'application/json',
         accept: 'application/json',
-        Authorization: `Bearer ${userInfo.token}`,
+        Authorization: `Barear ${userInfo.token}`,
       },
     };
     const { data } = await axios.delete(
       `http://localhost:3000/cars/${id}`,
       config,
     );
+    console.log(data);
     dispatch({
       type: types.DELETE_CAR,
-      payload: data,
+      payload: data.id,
     });
   } catch (error) {
     console.log(error);
@@ -65,7 +66,7 @@ const addCar = (FormData) => async (dispatch, getState) => {
       url: 'http://localhost:3000/cars',
       data: FormData,
       headers: {
-        Authorization: `Bearer ${userInfo.token}`,
+        Authorization: `Barear ${userInfo.token}`,
       },
     });
     dispatch({
@@ -90,7 +91,7 @@ const updateCar = (carId, formData) => async (dispatch, getState) => {
       url: `http://localhost:3000/cars/${carId.id}`,
       data: formData,
       headers: {
-        Authorization: `Bearer ${userInfo.token}`,
+        Authorization: `Barear ${userInfo.token}`,
       },
       body: {
         id: carId.id,

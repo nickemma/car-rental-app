@@ -1,4 +1,4 @@
-* {
+/* * {
   overflow: hidden;
 }
 
@@ -6,7 +6,7 @@
   * {
     overflow: auto;
   }
-}
+} */
 
 @tailwind base;
 @tailwind components;

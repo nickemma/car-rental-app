@@ -70,4 +70,41 @@ const logout = () => (dispatch) => {
   dispatch({ type: types.USER_LOGOUT });
 };
 
-export { login, register, logout };
+const getUsers = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: types.GET_USERS_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    console.log(userInfo.token);
+
+    const { data } = await axios({
+      method: 'GET',
+      url: 'http://localhost:3000/users',
+      headers: {
+        Authorization: `Barear ${userInfo.token}`,
+      },
+    });
+    console.log(data);
+
+    dispatch({
+      type: types.GET_USERS_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: types.USER_REGISTER_FAIL,
+      payload:
+        error.response && error.response.data.error
+          ? error.response.data.error
+          : error.error,
+    });
+  }
+};
+export {
+  login, register, logout, getUsers,
+};

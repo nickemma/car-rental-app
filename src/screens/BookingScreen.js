@@ -1,10 +1,13 @@
 /* eslint-disable */
 
-import React from "react";
+import React, { useState } from "react";
 import { BsCalendar2WeekFill } from "react-icons/bs";
 import image from "../assets/carback.jpg";
+import BookingPopUp from "../components/BookingPopUp";
 
 const BookingScreen = () => {
+  const [booking, setBooking] = useState(false)
+
   return (
     <section className="relative w-[100%] h-[100vh]  overflow-hidden">
       <div className="absolute z-[-1]">
@@ -32,12 +35,19 @@ const BookingScreen = () => {
             For any cancellation you can contact us and learn about our
             cancellation policies.
           </p>
-          <button className="flex  items-center bg-[#313131] text-white px-10 py-3 mt-10 rounded-lg z-10 hover:bg-white">
+          <button className="flex  items-center bg-[#313131] text-white px-10 py-3 mt-10 rounded-lg z-10 hover:text-[#313131] hover:bg-white transition ease-in-out"
+          onClick={() => setBooking(true)}
+          >
             <BsCalendar2WeekFill />{" "}
             <span className="ml-2 font-semibold text-[18px]">Book Now</span>
           </button>
         </div>
       </div>
+        {booking && (
+            <div className="top-0 left-0 w-[100%] h-[100vh] bg-black absolute z-[999]">
+                <BookingPopUp />
+            </div>
+        )}
     </section>
   );
 };

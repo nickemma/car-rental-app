@@ -9,7 +9,7 @@ import SwiperCore, { Virtual, Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import ReactPaginate from 'react-paginate';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
-import { getCars, deleteCar } from '../redux/actions/CarAction';
+import { deleteCar } from '../redux/actions/CarAction';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -25,9 +25,6 @@ const AddCarScreen = ({ currentItems }) => {
     dispatch(deleteCar(id));
   };
 
-  useEffect(() => {
-    dispatch(getCars());
-  }, []);
   return (
     <div className="flex flex-col justify-center items-center m-auto">
       <div className="flex flex-wrap gap-11 w-full xl:max-w-[1400px] mx-auto relative">
