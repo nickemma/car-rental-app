@@ -2,10 +2,18 @@
 
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { deleteUser, updateUser } from "../redux/actions/UserAction";
 
-
-const UserListScreen = ({ currentItems, deleteHandler, updateHandler }) => {
+const UserListScreen = ({
+  currentItems,
+  updateHandler,
+  deleteHandler,
+}) => {
   const [toggle, setToggle] = useState(false);
+  const usersLists = useSelector((state) => state.usersList);
+  const { loading, usersList } = usersLists;
+
+  const dispatch = useDispatch();
 
   const HandleToggleChange = () => {
     setToggle(!toggle);
@@ -36,7 +44,7 @@ const UserListScreen = ({ currentItems, deleteHandler, updateHandler }) => {
             </tr>
           </thead>
           <tbody>
-            {currentItems?.map((user) => (
+            {currentItems?.slice().sort((a , b) => a.admin - b.admin).map((user) => (
               <tr key={user.id} className="bg-white border-b">
                 <td className="px-4 py-3">
                   <div className="flex items-center text-sm">
@@ -76,45 +84,48 @@ const UserListScreen = ({ currentItems, deleteHandler, updateHandler }) => {
                 )}
                 <td className="py-4 px-6 flex items-start  gap-5 font-medium text-gray-900 whitespace-nowrap">
                   {/* delete button */}
-                  <button className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
+                  <button
+                    className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
                     onClick={() => deleteHandler(user.id)}
                   >
                     Delete
                   </button>
                   <>
-                    {user.admin === true ? (
-                      <div className="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
-                        <input
-                          type="checkbox"
-                          name="toggle"
-                          id="toggle"
-                          className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 right-0 appearance-none cursor-pointer"
-                          checked={toggle}
-                          onChange={HandleToggleChange}
-                          onClick={() => updateHandler(user.id)}
-                        />
-                        <label
-                          htmlFor="toggle"
-                          className="toggle-label block overflow-hidden h-6 rounded-full bg-blue-300 cursor-pointer"
-                        ></label>
-                      </div>
-                    ) : (
-                      <div className="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
-                        <input
-                          type="checkbox"
-                          name="toggle"
-                          id="toggle"
-                          className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"
-                          checked={toggle}
-                          onChange={HandleToggleChange}
-                          onClick={() => updateHandler(user.id)}
-                        />
-                        <label
-                          htmlFor="toggle"
-                          className="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"
-                        ></label>
-                      </div>
-                    )}
+                    <div
+                      onClick={() => updateHandler(user.id)}
+                    >
+                      {user.admin === true ? (
+                        <div className="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                          <input
+                            type="checkbox"
+                            name="toggle"
+                            id="toggle"
+                            className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 right-0 appearance-none cursor-pointer"
+                            checked={toggle}
+                            onChange={HandleToggleChange}
+                          />
+                          <label
+                            htmlFor="toggle"
+                            className="toggle-label block overflow-hidden h-6 rounded-full bg-blue-300 cursor-pointer"
+                          ></label>
+                        </div>
+                      ) : (
+                        <div className="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                          <input
+                            type="checkbox"
+                            name="toggle"
+                            id="toggle"
+                            className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"
+                            checked={toggle}
+                            onChange={HandleToggleChange}
+                          />
+                          <label
+                            htmlFor="toggle"
+                            className="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"
+                          ></label>
+                        </div>
+                      )}
+                    </div>
                   </>
                 </td>
               </tr>

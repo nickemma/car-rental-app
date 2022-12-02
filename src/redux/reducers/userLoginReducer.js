@@ -29,6 +29,16 @@ const userLoginReducer = (state = {
       };
     case typess.BOOKING_CAR_FAIL:
       return { ...state, loading: false, error: action.payload };
+    case typess.DELETE_BOOKING:
+      return {
+        ...state,
+        userInfo: {
+          ...state.userInfo,
+          reservations: state.userInfo.reservations.filter(
+            (reservation) => reservation.id !== action.payload,
+          ),
+        },
+      };
     default:
       return state;
   }

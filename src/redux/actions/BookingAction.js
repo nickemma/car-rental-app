@@ -37,4 +37,32 @@ const addBooking = (FormData) => async (dispatch, getState) => {
   }
 };
 
-export default addBooking;
+// delete booking
+const deleteBooking = (id) => async (dispatch, getState) => {
+  try {
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const { data } = await axios({
+      method: 'DELETE',
+      url: `http://localhost:3000/reservations/${id}`,
+      headers: {
+        Authorization: `Barear ${userInfo.token}`,
+      },
+    });
+    console.log(data);
+
+    dispatch({
+      type: types.DELETE_BOOKING,
+      payload: data.id,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export {
+  addBooking,
+  deleteBooking,
+};

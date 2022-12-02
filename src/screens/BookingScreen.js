@@ -44,8 +44,18 @@ const BookingScreen = () => {
         </div>
       </div>
         {booking && (
-            <div className="top-0 left-0 w-[100%] h-[100vh] bg-black absolute z-[999]">
-                <BookingPopUp />
+            <div className="flex items-center justify-center w-full h-full
+            absolute top-0 left-0 z-50 
+            ">
+                <BookingPopUp 
+                  onClose={
+                    () => setBooking(false)
+                  }
+                />
+                <div className="
+                  absolute top-0 left-0 w-full h-full bg-black
+                  opacity-80
+                "/>
             </div>
         )}
     </section>

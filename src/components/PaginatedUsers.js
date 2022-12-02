@@ -26,9 +26,10 @@ function PaginatedUsers({ itemsPerPage }) {
 
     const dispatch = useDispatch();
     
-    useEffect(() => {
-        dispatch(getUsers());
-    }, [dispatch]);
+    // useEffect(() => {
+    //     dispatch(getUsers());
+    // }, [dispatch]);
+
     const deleteHandler = (id) => {
         if (window.confirm("Are you sure")) {
             dispatch(deleteUser(id));

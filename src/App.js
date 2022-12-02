@@ -12,12 +12,17 @@ import DetailsCarScreen from './screens/DetailsCarScreen';
 import BookingScreen from './screens/BookingScreen';
 import ReservationsScreen from './screens/ReservationsScreen';
 import { getCars } from './redux/actions/CarAction';
+import { getUsers } from './redux/actions/UserAction';
 import UsersScreen from './screens/UsersScreen';
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCars());
+  }, []);
+
+  useEffect(() => {
+    dispatch(getUsers());
   }, []);
   return (
     <div className="App flex">
