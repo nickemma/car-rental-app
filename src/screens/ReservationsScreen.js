@@ -17,8 +17,8 @@ const ReservationsScreen = () => {
             <div>
               <h2>{info.car.brand}</h2>
             </div>
-            <h2>{info.due_date}</h2>
             <h2>{info.reservation_date}</h2>
+            <h2>{info.due_date}</h2>
           </li>
         ))}
       </ul>
