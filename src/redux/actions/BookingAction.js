@@ -30,9 +30,9 @@ const addBooking = (FormData) => async (dispatch, getState) => {
     dispatch({
       type: types.BOOKING_CAR_FAIL,
       payload:
-        error.response && error.response.data.error
-          ? error.response.data.error
-          : error.error,
+        error.response && error.response.data.msg
+          ? error.response.data.msg
+          : error.msg,
     });
   }
 };

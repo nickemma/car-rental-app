@@ -9,10 +9,12 @@ const BookingPopUp = () => {
   const [startdate, setStartDate] = useState('')
   const [enddate, setEndDate] = useState('') 
   const [carr, setCarr] = useState('')
-  const carList = useSelector((state) => state.carList);
-  const { cars } = carList;
-
+  
   const dispatch = useDispatch()
+  const car = useSelector((state) => state.carList)
+  const { cars } = car
+  const user = useSelector((state) => state.userLogin)
+  const { userInfo } = user
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -21,7 +23,7 @@ const BookingPopUp = () => {
     formData.append('reservation[reservation_date]', startdate);
     formData.append('reservation[due_date]', enddate);
     formData.append('reservation[car_id]', carr);
-    dispatch(addBooking(formData));
+    dispatch(addBooking(formData))
   }
   return (
     <div className="bg-white w-full h-full rounded-lg shadow-lg z-40">

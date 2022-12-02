@@ -11,8 +11,8 @@ import CarsScreen from './screens/CarsScreen';
 import DetailsCarScreen from './screens/DetailsCarScreen';
 import BookingScreen from './screens/BookingScreen';
 import ReservationsScreen from './screens/ReservationsScreen';
-import UserListScreen from './screens/UserListScreen';
 import { getCars } from './redux/actions/CarAction';
+import UsersScreen from './screens/UsersScreen';
 
 function App() {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ function App() {
           <Route path="/" element={<HomeScreen />} />
           <Route path="/login" element={<LoginScreen />} />
           <Route path="/register" element={<RegisterScreen />} />
-          <Route path="/users" element={<UserListScreen />} />
+          <Route path="/users" element={<UsersScreen />} />
           <Route path="/cars" element={<CarsScreen />} />
           <Route path="/addCar" element={<AddCar />} />
           <Route path="/editCar/:id" element={<UpdateCar />} />
