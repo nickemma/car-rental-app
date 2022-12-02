@@ -36,7 +36,7 @@ const deleteCar = (id) => async (dispatch, getState) => {
       headers: {
         'Content-Type': 'application/json',
         accept: 'application/json',
-        Authorization: `Barear ${userInfo.token}`,
+        Authorization: `Bearer ${userInfo.token}`,
       },
     };
     const { data } = await axios.delete(
@@ -66,7 +66,7 @@ const addCar = (FormData) => async (dispatch, getState) => {
       url: 'http://localhost:3000/cars',
       data: FormData,
       headers: {
-        Authorization: `Barear ${userInfo.token}`,
+        Authorization: `Bearer ${userInfo.token}`,
       },
     });
     dispatch({
@@ -91,7 +91,7 @@ const updateCar = (carId, formData) => async (dispatch, getState) => {
       url: `http://localhost:3000/cars/${carId.id}`,
       data: formData,
       headers: {
-        Authorization: `Barear ${userInfo.token}`,
+        Authorization: `Bearer ${userInfo.token}`,
       },
       body: {
         id: carId.id,

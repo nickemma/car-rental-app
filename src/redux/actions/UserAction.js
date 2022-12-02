@@ -85,7 +85,7 @@ const getUsers = () => async (dispatch, getState) => {
       method: 'GET',
       url: 'http://localhost:3000/users',
       headers: {
-        Authorization: `Barear ${userInfo.token}`,
+        Authorization: `Bearer ${userInfo.token}`,
       },
     });
     console.log(data);
@@ -116,7 +116,7 @@ const updateUser = (id) => async (dispatch, getState) => {
       method: 'POST',
       url: 'http://localhost:3000/toggle_admin',
       headers: {
-        Authorization: `Barear ${userInfo.token}`,
+        Authorization: `Bearer ${userInfo.token}`,
       },
       data: { id },
     });
@@ -150,7 +150,7 @@ const deleteUser = (id) => async (dispatch, getState) => {
       method: 'DELETE',
       url: `http://localhost:3000/users/${id}`,
       headers: {
-        Authorization: `Barear ${userInfo.token}`,
+        Authorization: `Bearer ${userInfo.token}`,
       },
     });
     console.log(data);

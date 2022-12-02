@@ -17,7 +17,7 @@ const addBooking = (FormData) => async (dispatch, getState) => {
       method: 'POST',
       url: 'http://localhost:3000/reservations',
       headers: {
-        Authorization: `Barear ${userInfo.token}`,
+        Authorization: `Bearer ${userInfo.token}`,
       },
       data: FormData,
     });

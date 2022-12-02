@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import * as types from '../constants/userConstants';
 
 const usersListReducer = (
@@ -5,7 +7,7 @@ const usersListReducer = (
     loading: false,
     users: [],
   },
-  action,
+  action
 ) => {
   switch (action.type) {
     case types.GET_USERS_REQUEST:
@@ -18,7 +20,9 @@ const usersListReducer = (
       return {
         ...state,
         loading: false,
-        usersList: state.usersList.map((user) => (user.id === action.payload.id ? action.payload : user)),
+        usersList: state.usersList.map((user) =>
+          user.id === action.payload.id ? action.payload : user
+        ),
       };
     case types.TOGGLE_USER_FAIL:
       return { error: action.payload };
