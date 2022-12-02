@@ -1,12 +1,14 @@
 import * as types from '../constants/userConstants';
 import * as typess from '../constants/bookingConstants';
 
-const userLoginReducer = (state = {
-  loading: false,
-  userInfo: null,
-  error: null,
-}, action) => {
-  console.log(action.payload);
+const userLoginReducer = (
+  state = {
+    loading: false,
+    userInfo: null,
+    error: null,
+  },
+  action
+) => {
   switch (action.type) {
     case types.USER_LOGIN_REQUEST:
       return { ...state, loading: true };
