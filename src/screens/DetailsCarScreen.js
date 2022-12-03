@@ -1,10 +1,11 @@
 /* eslint-disable */
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import Loader from '../components/Loader';
 import pic from '../assets/canva.png';
 import { AiOutlineRight } from 'react-icons/ai';
+import BookingPopUp from '../components/BookingPopUp';
 
 import {
   BsArrowRightCircleFill,
@@ -13,12 +14,12 @@ import {
 import { SlSettings } from 'react-icons/sl';
 
 const DetailsCarScreen = () => {
+  const [booking, setBooking] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
   const carDetails = useSelector((state) => state.carList);
   const { loading, cars } = carDetails;
   const carss = cars?.find((c) => c.id === parseInt(id, 10));
-
 
   return (
     <>
@@ -68,6 +69,7 @@ const DetailsCarScreen = () => {
                 <button
                   type="button"
                   className="bg-lime-500 text-white hover:bg-lime-400 px-6 py-2 rounded-full font-semibold min-w-[10rem] transition-colors border-2 border-transparent"
+                  onClick={() => setBooking(true)}
                 >
                   <div className="flex items-center gap-3 justify-center">
                     <SlSettings />
@@ -90,6 +92,21 @@ const DetailsCarScreen = () => {
       >
         <BsFillArrowLeftCircleFill />
       </div>
+      {booking && (
+        <div
+          className="flex items-center justify-center w-full h-full
+            absolute top-0 left-0 z-50 
+            "
+        >
+          <BookingPopUp onClose={() => setBooking(false)} />
+          <div
+            className="
+                  absolute top-0 left-0 w-full h-full bg-black
+                  opacity-80
+                "
+          />
+        </div>
+      )}
     </>
   );
 };
