@@ -34,7 +34,7 @@ const Navbar = () => {
             open ? 'w-[15rem]' : 'w-[3.2rem]'
           } h-screen border-r-2 border-slate-300 bg-white relative duration-300 `}
         >
-          <div className="bg-white rounded-full max-w-[70px] -right-4 top-2  shadow-lg  p-5 absolute">
+          <div className="bg-white rounded-full max-w-[70px] -right-4 top-2  shadow-lg  p-3 absolute">
             <FiChevronsLeft
               className={`cursor-pointer -right-0 top-9 w-9 font-medium text-2xl ${
                 !open && 'rotate-180'
