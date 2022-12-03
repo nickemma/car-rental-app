@@ -49,13 +49,13 @@ const DetailsCarScreen = () => {
                   <li className="odd:bg-gray-200 bg-gray-100 py-2 px-4">
                     <div className="flex items-center justify-center">
                       <span className="pr-10">Brand</span>
-                      <span className="text-right">{cars?.brand}</span>
+                      <span className="text-right">{carss?.brand}</span>
                     </div>
                   </li>
                   <li className="odd:bg-gray-200 bg-gray-100 py-2 px-4">
                     <div className="flex items-center justify-center">
                       <span className="pr-10">Daily Rate</span>
-                      <span className="text-right">${cars?.daily_rate}</span>
+                      <span className="text-right">${carss?.daily_rate}</span>
                     </div>
                   </li>
                 </ul>
@@ -84,7 +84,7 @@ const DetailsCarScreen = () => {
       )}
       <div
         className="fixed text-[1.8rem]
-                            bottom-14 left-52 z-10 bg-[#98bd2a] text-white
+                            bottom-14 left-60 z-10 bg-[#98bd2a] text-white
                             rounded-full p-3 cursor-pointer
                             hidden md:block
                             "

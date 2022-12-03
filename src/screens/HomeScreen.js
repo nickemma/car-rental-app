@@ -18,10 +18,10 @@ const HomeScreen = () => {
   const swiperRef = useRef(null);
 
   const handlePrev = () => {
-    swiperRef.current.swiper.slideNext();
+    swiperRef.current.swiper.slidePrev();
   };
   const handleNext = () => {
-    swiperRef.current.swiper.slidePrev();
+    swiperRef.current.swiper.slideNext();
   };
 
   const carList = useSelector((state) => state.carList);
@@ -85,13 +85,16 @@ const HomeScreen = () => {
                   <h3
                     className="font-bold
                                         text-xl text-gray-900 px-6 mt-[1rem] mb-[1rem]
-                                    ">{car.name}</h3>
-                                    <p className="card-text">{truncate(car.description, 100)}</p>
-                                </div>
-                            </NavLink>
-                        </SwiperSlide>
-                    ))}
-                          
+                                    "
+                  >
+                    {car.name}
+                  </h3>
+                  <p className="card-text">{truncate(car.description, 100)}</p>
+                </div>
+              </NavLink>
+            </SwiperSlide>
+          ))}
+
           <div
             className="absolute text-[1.8rem]
                             top-1/3 left-0 z-10 bg-[#98bd2a] text-white
