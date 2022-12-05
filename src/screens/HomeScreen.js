@@ -73,7 +73,10 @@ const HomeScreen = () => {
           ref={swiperRef}
         >
           {cars.map((car) => (
-            <SwiperSlide key={car.id} className="max-w-[300px]   mr-[60px] ml-[1.2rem]">
+            <SwiperSlide
+              key={car.id}
+              className="max-w-[300px]   mr-[60px] ml-[1.2rem]"
+            >
               <NavLink className="car" to={`/car/${car.id}`}>
                 <img
                   src={car.image.url}

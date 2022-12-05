@@ -1,17 +1,17 @@
 /* eslint-disable */
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
-import Loader from "../components/Loader";
-import pic from "../assets/canva.png";
-import { AiOutlineRight } from "react-icons/ai";
-import BookingPopUp from "../components/BookingPopUp";
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useParams, useNavigate } from 'react-router-dom';
+import Loader from '../components/Loader';
+import pic from '../assets/canva.png';
+import { AiOutlineRight } from 'react-icons/ai';
+import BookingPopUp from '../components/BookingPopUp';
 
 import {
   BsArrowRightCircleFill,
   BsFillArrowLeftCircleFill,
-} from "react-icons/bs";
-import { SlSettings } from "react-icons/sl";
+} from 'react-icons/bs';
+import { SlSettings } from 'react-icons/sl';
 
 const DetailsCarScreen = () => {
   const [booking, setBooking] = useState(false);
@@ -43,7 +43,7 @@ const DetailsCarScreen = () => {
               </p>
             </div>
             <div className="flex flex-col grow md:items-end">
-              <div className="grow flex flex-col rounded-2xl overflow-hidden border md:w-[60%]">
+              <div className="grow flex flex-col rounded-2xl overflow-hidden border">
                 <div className="flex justify-center items-center gap-4 border-b">
                   <h3 className="font-bold my-4">Other Details</h3>
                 </div>
@@ -63,7 +63,7 @@ const DetailsCarScreen = () => {
                 </ul>
               </div>
               <p className="flex items-center gap-2 mt-1">
-                DISCOVER MORE MODELS{" "}
+                DISCOVER MORE MODELS{' '}
                 <AiOutlineRight className="text-yellow-500" />
               </p>
               <img src={pic} alt="canva" />
