@@ -89,11 +89,11 @@ For you to see the app being applied in the browser during development
 - Twitter: [@techieEmma](https://twitter.com/techieEmma)
 - LinkedIn: [@Nicholas Emmanuel](https://www.linkedin.com/in/techieemma/)
 
-👤 **Said Laasri**
+👤 **Said laasri**
 
-- GitHub: [@NickEmma](https://github.com/NickEmma)
-- Twitter: [@techieEmma](https://twitter.com/techieEmma)
-- LinkedIn: [@Nicholas Emmanuel](https://www.linkedin.com/in/techieemma/)
+- GitHub: [@Said-laasri](https://github.com/Said-laasri)
+- Twitter: [@saidlaasr](https://twitter.com/saidlaasr)
+- LinkedIn: [SAID LAASRI](https://www.linkedin.com/in/said-laasri-8a4367172/)
 
 👤 **Abel Desalegn**
 
