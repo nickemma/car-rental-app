@@ -21,7 +21,6 @@ const addBooking = (FormData) => async (dispatch, getState) => {
       },
       data: FormData,
     });
-    console.log(data);
     dispatch({
       type: types.BOOKING_CAR_SUCCESS,
       payload: data,
@@ -51,8 +50,6 @@ const deleteBooking = (id) => async (dispatch, getState) => {
         Authorization: `Barear ${userInfo.token}`,
       },
     });
-    console.log(data);
-
     dispatch({
       type: types.DELETE_BOOKING,
       payload: data.id,
@@ -62,7 +59,4 @@ const deleteBooking = (id) => async (dispatch, getState) => {
   }
 };
 
-export {
-  addBooking,
-  deleteBooking,
-};
+export { addBooking, deleteBooking };

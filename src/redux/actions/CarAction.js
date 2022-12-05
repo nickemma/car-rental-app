@@ -43,7 +43,6 @@ const deleteCar = (id) => async (dispatch, getState) => {
       `http://localhost:3000/cars/${id}`,
       config,
     );
-    console.log(data);
     dispatch({
       type: types.DELETE_CAR,
       payload: data.id,
@@ -59,8 +58,6 @@ const addCar = (FormData) => async (dispatch, getState) => {
       userLogin: { userInfo },
     } = getState();
 
-    console.log(userInfo.token);
-    // post the data using fetch
     const { data } = await axios({
       method: 'post',
       url: 'http://localhost:3000/cars',
@@ -80,8 +77,6 @@ const addCar = (FormData) => async (dispatch, getState) => {
 
 const updateCar = (carId, formData) => async (dispatch, getState) => {
   try {
-    console.log(carId.id);
-
     const {
       userLogin: { userInfo },
     } = getState();

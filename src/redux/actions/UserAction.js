@@ -79,8 +79,6 @@ const getUsers = () => async (dispatch, getState) => {
       userLogin: { userInfo },
     } = getState();
 
-    console.log(userInfo.token);
-
     const { data } = await axios({
       method: 'GET',
       url: 'http://localhost:3000/users',
@@ -88,8 +86,6 @@ const getUsers = () => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     });
-    console.log(data);
-
     dispatch({
       type: types.GET_USERS_SUCCESS,
       payload: data,
@@ -120,8 +116,6 @@ const updateUser = (id) => async (dispatch, getState) => {
       },
       data: { id },
     });
-    console.log(data);
-
     dispatch({
       type: types.TOGGLE_USER_SUCCESS,
       payload: data,
@@ -144,8 +138,6 @@ const deleteUser = (id) => async (dispatch, getState) => {
       userLogin: { userInfo },
     } = getState();
 
-    console.log(userInfo.token);
-
     const { data } = await axios({
       method: 'DELETE',
       url: `http://localhost:3000/users/${id}`,
@@ -153,8 +145,6 @@ const deleteUser = (id) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     });
-    console.log(data);
-
     dispatch({
       type: types.DELETE_USER_SUCCESS,
       payload: data.id,

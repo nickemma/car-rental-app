@@ -1,5 +1,5 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable */
+
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -19,9 +19,6 @@ const UpdateCar = () => {
   const [valid, setValid] = useState(false);
 
   const dispatch = useDispatch();
-
-  console.log(cars);
-  console.log(carId.id);
 
   const Navigate = useNavigate();
   const handleUploadImage = (e) => {
