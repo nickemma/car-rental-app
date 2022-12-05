@@ -33,7 +33,7 @@ const DetailsCarScreen = () => {
               className="object-cover block rounded-full m-4 aspect-square w-[100%] md:ml-[40%]"
             />
           </div>
-          <div className="flex flex-col w-full items-start md:items-end  md:mr-10 py-10 px-10 lg:px-0">
+          <div className="flex flex-col w-full items-start md:items-end  md:mr-10 py-10 px-10 lg:px-0 text-center">
             <div className="flex flex-col  items-center md:items-end">
               <h1 className="md:text-right mb-4 text-3xl font-semibold text-slate-800">
                 {carss?.name}
@@ -42,7 +42,7 @@ const DetailsCarScreen = () => {
                 {carss?.description}
               </p>
             </div>
-            <div className="flex flex-col grow md:items-end">
+            <div className="flex flex-col grow md:items-end ">
               <div className="grow flex flex-col rounded-2xl overflow-hidden border">
                 <div className="flex justify-center items-center gap-4 border-b">
                   <h3 className="font-bold my-4">Other Details</h3>
@@ -70,7 +70,7 @@ const DetailsCarScreen = () => {
               <div className="my-6 flex justify-center">
                 <button
                   type="button"
-                  className="bg-lime-500 text-white hover:bg-lime-400 px-6 py-2 rounded-full font-semibold min-w-[10rem] transition-colors border-2 border-transparent"
+                  className="bg-lime-500 text-white hover:bg-lime-400 px-6 py-2 rounded-full font-semibold min-w-[10rem] transition-colors border-2 border-transparent mb-4"
                   onClick={() => setBooking(true)}
                 >
                   <div className="flex items-center gap-3 justify-center">
