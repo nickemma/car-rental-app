@@ -22,7 +22,6 @@ const login = (email, password) => async (dispatch) => {
       type: types.USER_LOGIN_SUCCESS,
       payload: data,
     });
-    localStorage.setItem('userInfo', JSON.stringify(data));
   } catch (error) {
     dispatch({
       type: types.USER_LOGIN_FAIL,
@@ -44,7 +43,7 @@ const register = (formData) => async (dispatch) => {
 
     const { data } = await axios({
       method: 'post',
-      url: 'http://localhost:3000/users',
+      url: 'http://localhost:3000/register',
       data: formData,
       config,
     });
@@ -80,17 +79,13 @@ const getUsers = () => async (dispatch, getState) => {
       userLogin: { userInfo },
     } = getState();
 
-    console.log(userInfo.token);
-
     const { data } = await axios({
       method: 'GET',
       url: 'http://localhost:3000/users',
       headers: {
-        Authorization: `Barear ${userInfo.token}`,
+        Authorization: `Bearer ${userInfo.token}`,
       },
     });
-    console.log(data);
-
     dispatch({
       type: types.GET_USERS_SUCCESS,
       payload: data,
@@ -105,6 +100,66 @@ const getUsers = () => async (dispatch, getState) => {
     });
   }
 };
+
+// update role user
+const updateUser = (id) => async (dispatch, getState) => {
+  try {
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const { data } = await axios({
+      method: 'POST',
+      url: 'http://localhost:3000/toggle_admin',
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+      data: { id },
+    });
+    dispatch({
+      type: types.TOGGLE_USER_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: types.TOGGLE_USER_FAIL,
+      payload:
+        error.response && error.response.data.error
+          ? error.response.data.error
+          : error.error,
+    });
+  }
+};
+
+// delete user
+const deleteUser = (id) => async (dispatch, getState) => {
+  try {
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const { data } = await axios({
+      method: 'DELETE',
+      url: `http://localhost:3000/users/${id}`,
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    });
+    dispatch({
+      type: types.DELETE_USER_SUCCESS,
+      payload: data.id,
+    });
+  } catch (error) {
+    dispatch({
+      type: types.DELETE_USER_FAIL,
+      payload:
+        error.response && error.response.data.error
+          ? error.response.data.error
+          : error.error,
+    });
+  }
+};
+
 export {
-  login, register, logout, getUsers,
+  login, register, logout, getUsers, updateUser, deleteUser,
 };

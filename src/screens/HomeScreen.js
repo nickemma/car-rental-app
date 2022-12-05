@@ -33,7 +33,7 @@ const HomeScreen = () => {
   return (
     <>
       {loading && <Loader />}
-      <div className="flex flex-col items-center justify-center mb-10">
+      <div className="flex flex-col items-center justify-center mb-10 mt-[2rem]">
         <h1
           className="
             text-4xl font-bold text-gray-900 mb-4
@@ -73,7 +73,10 @@ const HomeScreen = () => {
           ref={swiperRef}
         >
           {cars.map((car) => (
-            <SwiperSlide key={car.id} className="max-w-[300px]   mr-[70px]">
+            <SwiperSlide
+              key={car.id}
+              className="max-w-[300px]   mr-[60px] ml-[1.2rem]"
+            >
               <NavLink className="car" to={`/car/${car.id}`}>
                 <img
                   src={car.image.url}
@@ -85,13 +88,16 @@ const HomeScreen = () => {
                   <h3
                     className="font-bold
                                         text-xl text-gray-900 px-6 mt-[1rem] mb-[1rem]
-                                    ">{car.name}</h3>
-                                    <p className="card-text">{truncate(car.description, 100)}</p>
-                                </div>
-                            </NavLink>
-                        </SwiperSlide>
-                    ))}
-                          
+                                    "
+                  >
+                    {car.name}
+                  </h3>
+                  <p className="card-text">{truncate(car.description, 100)}</p>
+                </div>
+              </NavLink>
+            </SwiperSlide>
+          ))}
+
           <div
             className="absolute text-[1.8rem]
                             top-1/3 left-0 z-10 bg-[#98bd2a] text-white

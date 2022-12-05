@@ -9,6 +9,13 @@ import "react-toastify/dist/ReactToastify.css";
 import { auth, navbarItems, NavItemsAdmin, socialIcons } from "../data";
 import { logout } from "../redux/actions/UserAction";
 import { FiChevronsLeft } from "react-icons/fi";
+import {
+  AiOutlineHeart,
+  AiOutlineHome,
+  AiOutlineSearch,
+  AiOutlineUser,
+} from "react-icons/ai";
+import { BsFillPersonFill } from "react-icons/bs";
 
 const Navbar = () => {
   const notify = () => {
@@ -28,13 +35,20 @@ const Navbar = () => {
   };
   return (
     <>
-      <div className="flex max-h-[95vh]">
+      <div className="max-h-[95vh] hidden md:block">
+        <div
+          className={`${
+            open ? "w-[15rem]" : "w-[3.2rem]"
+          } h-screen border-r-2 border-slate-300 bg-white relative duration-300 `}
+        ></div>
+      </div>
+      <div className="md:fixed hidden md:block max-h-[95vh]">
         <div
           className={`${
             open ? "w-[15rem]" : "w-[3.2rem]"
           } h-screen border-r-2 border-slate-300 bg-white relative duration-300 `}
         >
-          <div className="bg-white rounded-full max-w-[70px] -right-4 top-2  shadow-lg  p-5 absolute">
+          <div className="bg-white rounded-full max-w-[70px] -right-4 top-2  shadow-lg  p-3 absolute">
             <FiChevronsLeft
               className={`cursor-pointer -right-0 top-9 w-9 font-medium text-2xl ${
                 !open && "rotate-180"
@@ -209,6 +223,23 @@ const Navbar = () => {
           </nav>
         </div>
         <ToastContainer />
+      </div>
+      <div className="fixed bottom-0 w-full bg-gray-50 rounded-t-3xl shadow-lg h-[4rem] z-[999] md:hidden ">
+        <div className="flex flex-row justify-between items-center p-2">
+          <div className="flex flex-row justify-around items-center w-full">
+            {navbarItems?.map((item, index) => (
+              <NavLink
+                key={index}
+                className="text-black text-sm flex items-center duration-500 p-4 shadow-lg cursor-pointer bg-white  z-[999] hover:bg-gray-400 rounded-full"
+                to={item.path}
+              >
+                <span className="text-black font-extrabold text-xl ml-1">
+                  {item.icon}
+                </span>
+              </NavLink>
+            ))}
+          </div>
+        </div>
       </div>
     </>
   );

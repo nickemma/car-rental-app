@@ -31,6 +31,7 @@
     "react-test-renderer": "^18.2.0",
     "react-toastify": "^9.1.1",
     "redux-devtools-extension": "^2.13.9",
+    "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.2",
     "swiper": "^8.4.5",
     "swiper.js": "^1.0.0",

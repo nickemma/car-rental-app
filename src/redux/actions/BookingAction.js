@@ -17,11 +17,10 @@ const addBooking = (FormData) => async (dispatch, getState) => {
       method: 'POST',
       url: 'http://localhost:3000/reservations',
       headers: {
-        Authorization: `Barear ${userInfo.token}`,
+        Authorization: `Bearer ${userInfo.token}`,
       },
       data: FormData,
     });
-    console.log(data);
     dispatch({
       type: types.BOOKING_CAR_SUCCESS,
       payload: data,
@@ -30,11 +29,34 @@ const addBooking = (FormData) => async (dispatch, getState) => {
     dispatch({
       type: types.BOOKING_CAR_FAIL,
       payload:
-        error.response && error.response.data.error
-          ? error.response.data.error
-          : error.error,
+        error.response && error.response.data.msg
+          ? error.response.data.msg
+          : error.msg,
     });
   }
 };
 
-export default addBooking;
+// delete booking
+const deleteBooking = (id) => async (dispatch, getState) => {
+  try {
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const { data } = await axios({
+      method: 'DELETE',
+      url: `http://localhost:3000/reservations/${id}`,
+      headers: {
+        Authorization: `Barear ${userInfo.token}`,
+      },
+    });
+    dispatch({
+      type: types.DELETE_BOOKING,
+      payload: data.id,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { addBooking, deleteBooking };

@@ -50,11 +50,11 @@ const RegisterScreen = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append('name', fullName);
-    formData.append('email', email);
-    formData.append('password', password);
-    formData.append('avatar', avatar);
-    formData.append('date_of_birth', age);
+    formData.append('user[name]', fullName);
+    formData.append('user[email]', email);
+    formData.append('user[password]', password);
+    formData.append('user[avatar]', avatar);
+    formData.append('user[date_of_birth]', age);
     setSubmited(true);
     if (valid) {
       dispatch(register(formData));

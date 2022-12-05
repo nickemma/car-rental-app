@@ -34,12 +34,12 @@ const validateComfirmePassword = ({
     : setCPasswordError("");
 };
 
-const validateAge = ({ date, setDateError }) => {
-  if (date) {
-    const age = new Date().getFullYear() - new Date(date).getFullYear();
-    return age < 18
-      ? setDateError("You must be at least 18 years old")
-      : setDateError("");
+const validateAge = ({ age, setAgeError }) => {
+  if (age) {
+    const Age = new Date().getFullYear() - new Date(age).getFullYear();
+    return Age < 18
+      ? setAgeError("You must be at least 18 years old")
+      : setAgeError("");
   }
 };
 

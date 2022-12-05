@@ -27,7 +27,7 @@ const AddCarScreen = ({ currentItems }) => {
 
   return (
     <div className="flex flex-col justify-center items-center m-auto">
-      <div className="flex flex-wrap gap-11 w-full xl:max-w-[1400px] mx-auto relative">
+      <div className="flex flex-wrap gap-11 w-full max-w-[970px] lg:max-w-[1000px] xl:max-w-[1400px] mx-auto relative">
         {currentItems?.map((car) => (
           <div key={car.id}>
             <div
