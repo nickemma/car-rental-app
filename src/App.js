@@ -25,7 +25,7 @@ function App() {
     dispatch(getUsers());
   }, []);
   return (
-    <div className="App flex">
+    <div className="App flex flex-col-reverse md:flex-row w-full">
       <Navbar />
       <div className="m-auto w-[100%]">
         <Routes>

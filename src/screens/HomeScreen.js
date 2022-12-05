@@ -18,10 +18,10 @@ const HomeScreen = () => {
   const swiperRef = useRef(null);
 
   const handlePrev = () => {
-    swiperRef.current.swiper.slidePrev();
+    swiperRef.current.swiper.slideNext();
   };
   const handleNext = () => {
-    swiperRef.current.swiper.slideNext();
+    swiperRef.current.swiper.slidePrev();
   };
 
   const carList = useSelector((state) => state.carList);
@@ -33,7 +33,7 @@ const HomeScreen = () => {
   return (
     <>
       {loading && <Loader />}
-      <div className="flex flex-col items-center justify-center mb-10">
+      <div className="flex flex-col items-center justify-center mb-10 mt-[2rem]">
         <h1
           className="
             text-4xl font-bold text-gray-900 mb-4
@@ -73,7 +73,7 @@ const HomeScreen = () => {
           ref={swiperRef}
         >
           {cars.map((car) => (
-            <SwiperSlide key={car.id} className="max-w-[300px]   mr-[70px]">
+            <SwiperSlide key={car.id} className="max-w-[300px]   mr-[60px] ml-[1.2rem]">
               <NavLink className="car" to={`/car/${car.id}`}>
                 <img
                   src={car.image.url}

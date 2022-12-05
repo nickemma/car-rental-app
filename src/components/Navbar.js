@@ -1,18 +1,25 @@
 /* eslint-disable */
-import { useState } from 'react';
-import { CgLogOut } from 'react-icons/cg';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import logo from '../assets/logo.gif';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { auth, navbarItems, NavItemsAdmin, socialIcons } from '../data';
-import { logout } from '../redux/actions/UserAction';
-import { FiChevronsLeft } from 'react-icons/fi';
+import { useState } from "react";
+import { CgLogOut } from "react-icons/cg";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import logo from "../assets/logo.gif";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { auth, navbarItems, NavItemsAdmin, socialIcons } from "../data";
+import { logout } from "../redux/actions/UserAction";
+import { FiChevronsLeft } from "react-icons/fi";
+import {
+  AiOutlineHeart,
+  AiOutlineHome,
+  AiOutlineSearch,
+  AiOutlineUser,
+} from "react-icons/ai";
+import { BsFillPersonFill } from "react-icons/bs";
 
 const Navbar = () => {
   const notify = () => {
-    toast.success('Logout successful');
+    toast.success("Logout successful");
   };
   const [open, setOpen] = useState(true);
   const user = useSelector((state) => state.userLogin);
@@ -24,27 +31,34 @@ const Navbar = () => {
   const onLogoutHandler = () => {
     dispatch(logout());
     notify();
-    navigate('/');
+    navigate("/");
   };
   return (
     <>
-      <div className="flex max-h-[95vh]">
+      <div className="max-h-[95vh] hidden md:block">
         <div
           className={`${
-            open ? 'w-[15rem]' : 'w-[3.2rem]'
+            open ? "w-[15rem]" : "w-[3.2rem]"
+          } h-screen border-r-2 border-slate-300 bg-white relative duration-300 `}
+        ></div>
+      </div>
+      <div className="md:fixed hidden md:block max-h-[95vh]">
+        <div
+          className={`${
+            open ? "w-[15rem]" : "w-[3.2rem]"
           } h-screen border-r-2 border-slate-300 bg-white relative duration-300 `}
         >
           <div className="bg-white rounded-full max-w-[70px] -right-4 top-2  shadow-lg  p-3 absolute">
             <FiChevronsLeft
               className={`cursor-pointer -right-0 top-9 w-9 font-medium text-2xl ${
-                !open && 'rotate-180'
+                !open && "rotate-180"
               }`}
               onClick={() => setOpen(!open)}
             />
           </div>
           <div
             className={`${
-              open ? 'w-20' : 'w-12'
+              open ? "w-20" : "w-12"
             } cursor-pointer duration-300 my-4 mx-auto border-rounded`}
           >
             <img src={logo} alt="logo" />
@@ -54,7 +68,7 @@ const Navbar = () => {
               {/* call avatar */}
               <div
                 className={`flex items-center justify-center  rounded-full bg-white ml-1
-              ${open ? 'w-[55px] h-[55px]' : 'w-[40px] h-[40px]'}
+              ${open ? "w-[55px] h-[55px]" : "w-[40px] h-[40px]"}
               `}
               >
                 <img
@@ -65,7 +79,7 @@ const Navbar = () => {
               </div>
               <p
                 className={`${
-                  !open && 'hidden'
+                  !open && "hidden"
                 } origin-left duration-200 text-sm mx-3 font-medium`}
               >
                 {userInfo?.name}
@@ -79,7 +93,7 @@ const Navbar = () => {
                 <NavLink
                   key={item.name}
                   className={`text-white text-sm flex items-center duration-500 gap-x-4 cursor-pointer p-2 hover:bg-gray-400 rounded-bl-lg ${
-                    item.gap ? 'mt-9' : 'mt-2'
+                    item.gap ? "mt-9" : "mt-2"
                   }`}
                   to={item.path}
                 >
@@ -88,7 +102,7 @@ const Navbar = () => {
                   </span>
                   <span
                     className={`${
-                      !open && 'hidden'
+                      !open && "hidden"
                     } origin-left duration-200 text-base font-semibold text-center text-slate-800`}
                   >
                     {item.name}
@@ -103,7 +117,7 @@ const Navbar = () => {
                 <ul className="pt-6">
                   <li
                     className={`${
-                      !open && 'hidden'
+                      !open && "hidden"
                     } origin-left duration-200 text-base font-bold text-center text-slate-800`}
                   >
                     Admin
@@ -112,7 +126,7 @@ const Navbar = () => {
                     <NavLink
                       key={item.name}
                       className={`text-white text-sm flex items-center duration-500 gap-x-4 cursor-pointer p-2 hover:bg-gray-400 rounded-bl-lg ${
-                        item.gap ? 'mt-9' : 'mt-2'
+                        item.gap ? "mt-9" : "mt-2"
                       }`}
                       to={item.path}
                     >
@@ -121,7 +135,7 @@ const Navbar = () => {
                       </span>
                       <span
                         className={`${
-                          !open && 'hidden'
+                          !open && "hidden"
                         } origin-left duration-200 text-base font-semibold text-center text-slate-800`}
                       >
                         {item.name}
@@ -139,7 +153,7 @@ const Navbar = () => {
                   <NavLink
                     key={item.name}
                     className={`text-white text-sm flex items-center duration-500 gap-x-4 cursor-pointer p-2 hover:bg-gray-500 rounded-bl-lg ${
-                      item.gap ? 'mt-9' : 'mt-2'
+                      item.gap ? "mt-9" : "mt-2"
                     }`}
                     to={item.path}
                   >
@@ -148,7 +162,7 @@ const Navbar = () => {
                     </span>
                     <span
                       className={`${
-                        !open && 'hidden'
+                        !open && "hidden"
                       } origin-left duration-200 text-base font-semibold text-center text-slate-800`}
                     >
                       {item.name}
@@ -168,7 +182,7 @@ const Navbar = () => {
                   </span>
                   <span
                     className={`${
-                      !open && 'hidden'
+                      !open && "hidden"
                     } origin-left duration-200 text-base font-semibold text-center text-slate-800`}
                   >
                     Logout
@@ -179,19 +193,19 @@ const Navbar = () => {
             <div className="flex flex-col items-center">
               <ul
                 className={`pt-6 flex items-center
-              ${!open ? 'flex-col' : 'flex-row'}
+              ${!open ? "flex-col" : "flex-row"}
               `}
               >
                 {socialIcons.map((icons, index) => (
                   <li
                     key={index}
                     className={`text-white text-sm flex items-center duration-500 gap-x-4 cursor-pointer p-2 hover:bg-gray-400 rounded-bl-lg ${
-                      icons.gap ? 'mt-9' : 'mt-2'
+                      icons.gap ? "mt-9" : "mt-2"
                     }`}
                   >
                     <span
                       className={`text-black font-extrabold text-xl ml-1  
-                     ${!open && 'hidden'}`}
+                     ${!open && "hidden"}`}
                     >
                       {icons.icon}
                     </span>
@@ -200,7 +214,7 @@ const Navbar = () => {
               </ul>
               <p
                 className={`${
-                  !open && 'hidden'
+                  !open && "hidden"
                 } origin-left duration-200 text-sm mx-3 font-medium`}
               >
                 Microverse Copyright 2022
@@ -209,6 +223,23 @@ const Navbar = () => {
           </nav>
         </div>
         <ToastContainer />
+      </div>
+      <div className="fixed bottom-0 w-full bg-gray-50 rounded-t-3xl shadow-lg h-[4rem] z-[999] md:hidden ">
+        <div className="flex flex-row justify-between items-center p-2">
+          <div className="flex flex-row justify-around items-center w-full">
+            {navbarItems?.map((item, index) => (
+              <NavLink
+                key={index}
+                className="text-black text-sm flex items-center duration-500 p-4 shadow-lg cursor-pointer bg-white  z-[999] hover:bg-gray-400 rounded-full"
+                to={item.path}
+              >
+                <span className="text-black font-extrabold text-xl ml-1">
+                  {item.icon}
+                </span>
+              </NavLink>
+            ))}
+          </div>
+        </div>
       </div>
     </>
   );

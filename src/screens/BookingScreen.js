@@ -14,13 +14,13 @@ const BookingScreen = () => {
         <img
           src={image}
           alt="back"
-          className="w-[100%] h-[100%] object-cover"
+          className="w-full h-[100vh] object-cover md:h-[100%]"
         />
       </div>
       <div className="absolute top-0 left-0 w-[100%] h-[100vh] bg-[#3a6608] opacity-70 z-[-1]"></div>
       <div className="absolute top-0 left-0 w-[100%] h-[100vh]">
         <div className="flex flex-col items-center justify-center h-[100vh]">
-          <p className="max-w-[1000px] leading-[3rem] text-white font-semibold text-[21px]">
+          <p className="md:max-w-[1000px] max-w-[90%] md:leading-[3rem] text-white font-semibold text-[16px] md:text-[21px]">
             Thank you for being interested in renting one of our exclusive
             vehicles that we have for you at EXO Cars, it is important to
             consider the following before continuing with your reservation:

@@ -6,10 +6,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addBooking } from "../redux/actions/BookingAction";
 
-const BookingPopUp = ({ onClose }) => {
+const BookingPopUp = ({ onClose , carId }) => {
   const [startdate, setStartDate] = useState("");
   const [enddate, setEndDate] = useState("");
-  const [carr, setCarr] = useState("");
+  const [carr, setCarr] = useState(carId);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -18,6 +18,7 @@ const BookingPopUp = ({ onClose }) => {
   const user = useSelector((state) => state.userLogin);
   const { userInfo } = user;
 
+  const carss = cars?.find((c) => c.id === parseInt(carId, 10));
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(startdate, enddate, carr);
@@ -30,7 +31,7 @@ const BookingPopUp = ({ onClose }) => {
     navigate("/reservations");
   };
   return (
-    <div className="bg-white relative w-[500px] h-[400px] rounded-lg shadow-lg z-40">
+    <div className="bg-white relative md:w-[500px] md:h-[400px] rounded-lg shadow-lg z-40">
       {/* add close Icon from react icons */}
       <div className="
         absolute  right-8
@@ -43,6 +44,8 @@ const BookingPopUp = ({ onClose }) => {
       </div>
       
       <div className="flex flex-col items-center justify-center gap-5 p-9 mt-16">
+      {
+        !carId ? (
         <select
           className="w-full h-10 rounded-lg bg-gray-50 border-gray-300 focus:outline-none px-2"
           onChange={(e) => setCarr(e.target.value)}
@@ -56,6 +59,14 @@ const BookingPopUp = ({ onClose }) => {
             </option>
           ))}
         </select>
+        ) : (
+          <div className="w-full h-10 rounded-lg bg-gray-50 border-gray-300 focus:outline-none px-2 mt-5">
+            <p className="text-[#313131]">
+              {carss?.name}
+            </p>
+          </div>
+        )
+      }
 
         <div className="flex flex-col items-center justify-center w-full h-full">
           <input
