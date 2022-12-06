@@ -66,7 +66,7 @@ The backend was made with Ruby on Rails and can be found [here](https://github.c
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://rails-production-c0ec.up.railway.app/api-docs/index.html)
+- [Live Demo Link](https://car-rental-1pl5awonj-nickemma.vercel.app/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

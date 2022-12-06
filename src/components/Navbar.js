@@ -71,11 +71,23 @@ const Navbar = () => {
               ${open ? "w-[55px] h-[55px]" : "w-[40px] h-[40px]"}
               `}
               >
-                <img
-                  src={userInfo?.avatar?.url}
-                  alt="avatar"
-                  className="w-full h-full object-cover rounded-full"
-                />
+                                {
+                userInfo?.avatar?.url ? (
+                  <img
+                    src={userInfo?.avatar?.url}
+                    alt="avatar"
+                    className={`rounded-full ${
+                      open ? 'w-[55px] h-[55px]' : 'w-[40px] h-[40px]'
+                    }`}
+                  />
+                ) : (
+                  <BsFillPersonFill
+                    className={`${
+                      open ? 'w-[55px] h-[55px]' : 'w-[40px] h-[40px]'
+                    } text-slate-500 p-2 bg-white shadow-lg rounded-full m-1`}
+                  />
+                )
+              }
               </div>
               <p
                 className={`${
