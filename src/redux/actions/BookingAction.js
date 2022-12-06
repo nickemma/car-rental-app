@@ -15,7 +15,7 @@ const addBooking = (FormData) => async (dispatch, getState) => {
 
     const { data } = await axios({
       method: 'POST',
-      url: 'http://localhost:3000/reservations',
+      url: 'https://rails-production-c0ec.up.railway.app/reservations',
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
       },
@@ -45,7 +45,7 @@ const deleteBooking = (id) => async (dispatch, getState) => {
 
     const { data } = await axios({
       method: 'DELETE',
-      url: `http://localhost:3000/reservations/${id}`,
+      url: `https://rails-production-c0ec.up.railway.app/reservations/${id}`,
       headers: {
         Authorization: `Barear ${userInfo.token}`,
       },
