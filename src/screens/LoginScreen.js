@@ -61,7 +61,7 @@ const LoginScreen = () => {
     <div>
       {loading && <Loader />}
       <form
-        className="login shadow-md rounded px-8 pt-6 pb-8 mb-4  w-full max-w-sm mx-auto "
+        className="login shadow-md rounded px-8 pt-6 pb-8 mb-4  w-full max-w-sm mx-auto mt-[8rem] md:mt-0"
         onSubmit={handleSubmit}
       >
         <div className="mb-4">

@@ -5,9 +5,9 @@ import { deleteBooking } from '../redux/actions/BookingAction';
 
 const ReservationsScreen = () => {
   const reservation = useSelector((state) => state.userLogin.userInfo);
-  const { reservations } = reservation;
+  // const { reservations } = reservation;
 
-  console.log(reservations);
+  // console.log(reservations);
 
   const dispatch = useDispatch();
 
@@ -27,7 +27,7 @@ const ReservationsScreen = () => {
         My Reservations List
       </h1>
       <div className="flex flex-row flex-wrap gap-5 md:flex-nowrap md:gap-0 md:flex-col w-full mb-12">
-        {reservation.reservations?.map((info) => (
+        {reservation?.reservations.map((info) => (
           <div
             key={info.id}
             className="flex md:flex-row md:w-full w-[310px]  flex-col items-center justify-between m-auto shadow-md rounded-lg mb-4 md:m-5 md:h-[80px] px-[10px]"
