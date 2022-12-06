@@ -107,16 +107,14 @@ const updateUser = (id) => async (dispatch, getState) => {
     const {
       userLogin: { userInfo },
     } = getState();
-    console.log(id);
     const { data } = await axios({
-      method: 'POST',
+      method: 'PUT',
       url: 'https://rails-production-c0ec.up.railway.app/toggle_admin',
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
       },
       data: { id },
     });
-    console.log(data);
     dispatch({
       type: types.TOGGLE_USER_SUCCESS,
       payload: data,

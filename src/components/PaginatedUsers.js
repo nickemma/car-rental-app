@@ -35,7 +35,6 @@ function PaginatedUsers({ itemsPerPage }) {
   const updateHandler = (id) => {
     if (window.confirm('Are you sure')) {
       dispatch(updateUser(id));
-      console.log(id);
     }
   };
 
