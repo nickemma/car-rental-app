@@ -19,16 +19,12 @@ function PaginatedItems({ itemsPerPage }) {
   const { loading, cars } = carList;
 
   const endOffset = itemOffset + itemsPerPage;
-  console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const currentItems = cars?.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(cars?.length / itemsPerPage);
 
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % cars?.length;
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    );
     setItemOffset(newOffset);
   };
 
