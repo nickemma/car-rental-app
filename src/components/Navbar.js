@@ -3,7 +3,7 @@ import { useState } from "react";
 import { CgLogOut } from "react-icons/cg";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import logo from "../assets/logo.gif";
+import logo from "../assets/exotic.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { auth, navbarItems, NavItemsAdmin, socialIcons } from "../data";
