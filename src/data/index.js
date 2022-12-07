@@ -1,7 +1,4 @@
-import { GrUpdate } from 'react-icons/gr';
-import { BsBookHalf } from 'react-icons/bs';
 import {
-  AiFillCar,
   AiFillFacebook,
   AiFillGithub,
   AiFillLinkedin,
@@ -11,24 +8,6 @@ import {
 import { FaUsers } from 'react-icons/fa';
 import { BiLogInCircle } from 'react-icons/bi';
 import { MdOutlineLibraryAdd } from 'react-icons/md';
-
-export const navbarItems = [
-  {
-    name: 'MODELS',
-    path: '/',
-    icon: <AiFillCar />,
-  },
-  {
-    name: 'RESERVATIONS',
-    path: '/reservations',
-    icon: <GrUpdate />,
-  },
-  {
-    name: 'BOOKING',
-    path: '/booking',
-    icon: <BsBookHalf />,
-  },
-];
 
 export const auth = [
   {
