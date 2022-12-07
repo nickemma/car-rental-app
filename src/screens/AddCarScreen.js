@@ -1,16 +1,10 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-plusplus */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+/* eslint-disable */
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import SwiperCore, { Virtual, Navigation, Pagination } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import ReactPaginate from 'react-paginate';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 import { deleteCar } from '../redux/actions/CarAction';
-
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
