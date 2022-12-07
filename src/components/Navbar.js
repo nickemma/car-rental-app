@@ -6,17 +6,12 @@ import { useSelector, useDispatch } from "react-redux";
 import logo from "../assets/exotic.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { auth, navbarItems, NavItemsAdmin, socialIcons } from "../data";
+import { auth, NavItemsAdmin, socialIcons } from "../data";
 import { logout } from "../redux/actions/UserAction";
 import { FiChevronsLeft } from "react-icons/fi";
 import { GrUpdate } from 'react-icons/gr';
 import { BsBookHalf } from 'react-icons/bs';
-import {
-  AiOutlineHeart,
-  AiOutlineHome,
-  AiOutlineSearch,
-  AiOutlineUser,
-} from "react-icons/ai";
+import { AiFillCar } from 'react-icons/ai';
 import { BsFillPersonFill } from "react-icons/bs";
 
 const Navbar = () => {
