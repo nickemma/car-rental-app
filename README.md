@@ -21,6 +21,13 @@
   - [🙏 Acknowledgments ](#-acknowledgments-)
   - [📝 License ](#-license-)
 
+# Kanban Board
+
+[Kanban Board Link](https://github.com/users/NickEmma/projects/7)
+
+![203752985-91534730-bce9-449f-959c-1f229b9ecb8c](https://user-images.githubusercontent.com/100702612/206154545-deaaedf2-ec25-4278-a94f-511ef5b7d17c.png)
+![203753007-d413f48a-0470-4841-88f1-fd2d69fd0c4a](https://user-images.githubusercontent.com/100702612/206154591-6141f30e-4135-4d14-8d19-b1729b25a9f3.png)
+
 # 📖 Exotic Rentals  <a name="about-project"></a>
 
 **Exotic Rentals** is a car rental agencies primarily serve people who requires a temporary vehicle, It allows users to create an account, login, and book a car for a specific period of time. It also allows users to view all available cars, and view a specific car. It also allows users to view all bookings made by a specific user.
