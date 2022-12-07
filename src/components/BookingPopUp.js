@@ -15,8 +15,6 @@ const BookingPopUp = ({ onClose, carId }) => {
   const dispatch = useDispatch();
   const car = useSelector((state) => state.carList);
   const { cars } = car;
-  const user = useSelector((state) => state.userLogin);
-  const { userInfo } = user;
 
   const carss = cars?.find((c) => c.id === parseInt(carId, 10));
   const handleSubmit = (e) => {
