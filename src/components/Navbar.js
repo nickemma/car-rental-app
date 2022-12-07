@@ -9,6 +9,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { auth, navbarItems, NavItemsAdmin, socialIcons } from "../data";
 import { logout } from "../redux/actions/UserAction";
 import { FiChevronsLeft } from "react-icons/fi";
+import { GrUpdate } from 'react-icons/gr';
+import { BsBookHalf } from 'react-icons/bs';
 import {
   AiOutlineHeart,
   AiOutlineHome,
@@ -27,6 +29,23 @@ const Navbar = () => {
   const admin = userInfo?.admin;
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const navbarItems = [
+      {
+        name: 'MODELS',
+        path: '/',
+        icon: <AiFillCar />,
+      },
+      {
+        name: 'RESERVATIONS',
+        path: `${userInfo ? '/reservations' : '/login'}`,
+        icon: <GrUpdate />,
+      },
+      {
+        name: 'BOOKING',
+        path: `${userInfo ? '/booking' : '/login'}`,
+        icon: <BsBookHalf />,
+      },
+    ];
 
   const onLogoutHandler = () => {
     dispatch(logout());
