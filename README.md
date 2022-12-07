@@ -23,6 +23,19 @@
 
 # Kanban Board
 
+**Our collaboration consists of 5 members:**
+
+@NickEmma 
+
+@AACHOURMOHAMED
+
+@amejid 
+
+@Abel-desu
+
+@Said-laasri
+
+
 [Kanban Board Link](https://github.com/users/NickEmma/projects/7)
 
 ![203752985-91534730-bce9-449f-959c-1f229b9ecb8c](https://user-images.githubusercontent.com/100702612/206154545-deaaedf2-ec25-4278-a94f-511ef5b7d17c.png)
