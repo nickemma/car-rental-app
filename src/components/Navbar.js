@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { useState } from "react";
-import { CgLogOut } from "react-icons/cg";
+import { CgLogIn, CgLogOut } from "react-icons/cg";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import logo from "../assets/exotic.png";
@@ -264,6 +264,28 @@ const Navbar = () => {
                 </span>
               </NavLink>
             ))}
+            {
+              !userInfo ? (
+                <NavLink
+                  className="text-black text-sm flex items-center duration-500 p-4 shadow-lg cursor-pointer bg-white  z-[999] hover:bg-gray-400 rounded-full"
+                  to="/login"
+                >
+                  <span className="text-black font-extrabold text-xl ml-1">
+                    <CgLogIn />
+                  </span>
+                </NavLink>
+              ) : (
+                <button
+                  className="text-black text-sm flex items-center duration-500 p-4 shadow-lg cursor-pointer bg-white  z-[999] hover:bg-gray-400 rounded-full"
+                  onClick={onLogoutHandler}
+                >
+                  <span className="text-black font-extrabold text-xl ml-1">
+                    <CgLogOut />
+                  </span>
+                </button>
+              )
+            }
+
           </div>
         </div>
       </div>
