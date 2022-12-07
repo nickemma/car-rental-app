@@ -5,9 +5,6 @@ import { deleteBooking } from '../redux/actions/BookingAction';
 
 const ReservationsScreen = () => {
   const reservation = useSelector((state) => state.userLogin.userInfo);
-  // const { reservations } = reservation;
-
-  // console.log(reservations);
 
   const dispatch = useDispatch();
 
