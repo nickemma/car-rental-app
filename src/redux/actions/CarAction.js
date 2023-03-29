@@ -10,7 +10,10 @@ const getCars = () => async (dispatch) => {
         accept: 'application/json',
       },
     };
-    const { data } = await axios.get('https://rails-production-c0ec.up.railway.app/cars', config);
+    const { data } = await axios.get(
+      'https://lazycars.onrender.com/cars',
+      config
+    );
     dispatch({
       type: types.GET_CARS_SUCCESS,
       payload: data,
@@ -40,8 +43,8 @@ const deleteCar = (id) => async (dispatch, getState) => {
       },
     };
     const { data } = await axios.delete(
-      `https://rails-production-c0ec.up.railway.app/cars/${id}`,
-      config,
+      `https://lazycars.onrender.com/cars/${id}`,
+      config
     );
     dispatch({
       type: types.DELETE_CAR,
@@ -60,7 +63,7 @@ const addCar = (FormData) => async (dispatch, getState) => {
 
     const { data } = await axios({
       method: 'post',
-      url: 'https://rails-production-c0ec.up.railway.app/cars',
+      url: 'https://lazycars.onrender.com/cars',
       data: FormData,
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
@@ -83,7 +86,7 @@ const updateCar = (carId, formData) => async (dispatch, getState) => {
 
     const { data } = await axios({
       method: 'put',
-      url: `https://rails-production-c0ec.up.railway.app/cars/${carId.id}`,
+      url: `https://lazycars.onrender.com/cars/${carId.id}`,
       data: formData,
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
@@ -102,6 +105,4 @@ const updateCar = (carId, formData) => async (dispatch, getState) => {
   }
 };
 
-export {
-  getCars, deleteCar, addCar, updateCar,
-};
+export { getCars, deleteCar, addCar, updateCar };

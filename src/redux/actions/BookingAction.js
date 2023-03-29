@@ -15,7 +15,7 @@ const addBooking = (FormData) => async (dispatch, getState) => {
 
     const { data } = await axios({
       method: 'POST',
-      url: 'https://rails-production-c0ec.up.railway.app/reservations',
+      url: 'https://lazycars.onrender.com/reservations',
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
       },
@@ -45,7 +45,7 @@ const deleteBooking = (id) => async (dispatch, getState) => {
 
     const { data } = await axios({
       method: 'DELETE',
-      url: `https://rails-production-c0ec.up.railway.app/reservations/${id}`,
+      url: `https://lazycars.onrender.com/reservations/${id}`,
       headers: {
         Authorization: `Barear ${userInfo.token}`,
       },

@@ -13,7 +13,7 @@ const login = (email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      'https://rails-production-c0ec.up.railway.app/auth',
+      'https://lazycars.onrender.com/auth',
       { email, password },
       config,
     );
@@ -43,7 +43,7 @@ const register = (formData) => async (dispatch) => {
 
     const { data } = await axios({
       method: 'post',
-      url: 'https://rails-production-c0ec.up.railway.app/register',
+      url: 'https://lazycars.onrender.com/register',
       data: formData,
       config,
     });
@@ -81,7 +81,7 @@ const getUsers = () => async (dispatch, getState) => {
 
     const { data } = await axios({
       method: 'GET',
-      url: 'https://rails-production-c0ec.up.railway.app/users',
+      url: 'https://lazycars.onrender.com/users',
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
       },
@@ -109,7 +109,7 @@ const updateUser = (id) => async (dispatch, getState) => {
     } = getState();
     const { data } = await axios({
       method: 'PUT',
-      url: 'https://rails-production-c0ec.up.railway.app/toggle_admin',
+      url: 'https://lazycars.onrender.com/toggle_admin',
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
       },
@@ -139,7 +139,7 @@ const deleteUser = (id) => async (dispatch, getState) => {
 
     const { data } = await axios({
       method: 'DELETE',
-      url: `https://rails-production-c0ec.up.railway.app/users/${id}`,
+      url: `https://lazycars.onrender.com/users/${id}`,
       headers: {
         Authorization: `Bearer ${userInfo.token}`,
       },
